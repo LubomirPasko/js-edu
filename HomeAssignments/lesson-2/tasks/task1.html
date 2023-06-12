@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/work-style.css">
+    <title>Task 1</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header></header>
+        <main class="work">
+            <div class="work__block">
+                <div class="work__container">
+					<h1 class="work__title">Задача 0</h1>
+					<div class="work__back work__back_button">
+						<a class="work__link" href="../index.html">< BACK</a>
+					</div>
+					<p class="list-work__text list-work__text_mgb">
+						Обчислити значення виразів:
+					</p>
+					<div class="list-work__img">
+						<img src="../img/1.png" alt="умова задачі">
+					</div>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+    </div>
+	<script>
+		//Приймаю необхідні дані і присвоюю їх змінним (використовую parseFloat, бо числа можуть бути дійсними)
+		let a = parseFloat(prompt('Введіть значення змінної а', '0'));
+		let b = parseFloat(prompt('Введіть значення змінної b', '0'));
+		let c = parseFloat(prompt('Введіть значення змінної c', '0'));
+		//Знаходжу результат (трохи перевіряю округлення і приведення до числа)
+		let resOne = Number((a + 12 + b).toFixed(2));
+		let resTwo = Number((Math.sqrt((a + b)/(2 * a))).toFixed(2));
+		let resThree = Number((Math.cbrt((a + b) * c)).toFixed(2));
+		let resFour = Number((Math.sin(a / -b)).toFixed(2));
+		//Виводжу результат на сторінку
+		document.write(`<div class="solution">
+			Результат виконання:<br><br>
+			S1 = ${resOne}<br>
+			S2 = ${resTwo}<br>
+			S3 = ${resThree}<br>
+			S4 = ${resFour}<br>
+			</div>`);
+	</script>
+</body>
+</html>

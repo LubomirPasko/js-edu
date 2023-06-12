@@ -1,0 +1,62 @@
+@import url("reset.css");
+@import url("common.css");
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
+body {
+	/* font must be here */
+	/* font size must be here */
+	/* color must be here */
+	font-family: 'Roboto', sans-serif;
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 1.1;
+	color: rgb(77, 0, 0);
+	background-color: rgb(235, 235, 235);
+	min-height: 1200px;
+}
+[class*="__container"] {
+	max-width: 1270px;
+	margin: 0 auto;
+	padding-inline: 15px;
+}
+.assign__title {
+	text-align: center;
+	padding-top: 100px;
+	font-size: 28px;
+	margin-bottom: 40px;
+}
+/* .assign__list {
+
+} */
+.list-assign {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	align-items: flex-start;
+
+}
+.list-assign__item,.assign__link {
+	color: #000000;
+	border: 2px solid #000000;
+	border-radius: 10px;
+	box-shadow: 1px -1px 2px;
+	margin-bottom: 15px;
+
+}
+.list-assign__link,.assign__link {
+	display: inline-block;
+	padding: 10px;
+	border-radius: 8px;
+	transition: all 0.3s;
+}
+.list-assign__link:hover {
+	color: rgb(255, 255, 255);
+	background-color: rgb(139, 0, 0);
+}
+.assign__link:hover {
+	color: rgb(255, 255, 255);
+	background-color: rgb(0, 66, 11);
+}

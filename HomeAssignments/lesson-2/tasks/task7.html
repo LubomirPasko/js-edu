@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/work-style.css">
+    <title>Task 7</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header></header>
+        <main class="work">
+            <div class="work__block">
+                <div class="work__container">
+					<h1 class="work__title">Задача 6</h1>
+					<div class="work__back work__back_button">
+						<a class="work__link" href="../index.html">< BACK</a>
+					</div>
+					<p class="list-work__text list-work__text_mgb">
+						З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. 
+						Обчислити вартість кожного товару окремо та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.
+					</p>
+                </div>
+            </div>
+        </main>
+        <footer>
+			
+		</footer>
+    </div>
+	<script>
+		//Приймаю необхідні дані і присвоюю їх змінним 
+		let quantityFirstProduct = (parseFloat(prompt('Введіть кількість першого товару', '1.000'))).toFixed(3);
+		let priceFirstProduct = (parseFloat(prompt('Введіть ціну першого товару', '1.00'))).toFixed(2);
+		let quantitySecondProduct = (parseFloat(prompt('Введіть кількість другого товару', '1.000'))).toFixed(3);
+		let priceSecondProduct = (parseFloat(prompt('Введіть ціну другого товару', '1.00'))).toFixed(2);
+		let quantityThirdProduct = (parseFloat(prompt('Введіть кількість третього товару', '1.000'))).toFixed(3);
+		let priceThirdProduct = (parseFloat(prompt('Введіть ціну третього товару', '1.00'))).toFixed(2);
+		//Знаходжу результат
+		let costFirstProduct = Number((quantityFirstProduct * priceFirstProduct).toFixed(2));
+		let costSecondProduct = Number((quantitySecondProduct * priceSecondProduct).toFixed(2));
+		let costThirdProduct = Number((quantityThirdProduct * priceThirdProduct).toFixed(2));
+		let sumCostProduct = costFirstProduct + costSecondProduct + costThirdProduct;
+		let tax = (sumCostProduct * 0.2).toFixed(2);
+		//Виводжу результат на сторінку
+		document.write(`<div class="solution"> 
+				<table class="solution__check check">
+						<tr>
+							<th colspan="4">Чек:</th>
+						</tr>
+						<tr>
+							<td>Назва товару</td>
+							<td>Кількість</td>
+							<td>Ціна</td>
+							<td>Вартість</td>
+						</tr>
+						<tr>
+							<td class="check__prod">Томати</td>
+							<td>${quantityFirstProduct}</td>
+							<td>${priceFirstProduct} грн</td>
+							<td>${costFirstProduct} грн</td>
+						</tr>
+						<tr >
+							<td class="check__prod">Рукола</td>
+							<td>${quantitySecondProduct}</td>
+							<td>${priceSecondProduct} грн</td>
+							<td>${costSecondProduct} грн</td>
+						</tr>
+						<tr>
+							<td class="check__prod">Моцарелла</td>
+							<td>${quantityThirdProduct}</td>
+							<td>${priceThirdProduct} грн</td>
+							<td>${costThirdProduct} грн</td>
+						</tr>
+						<tr>
+							<td colspan="3">В тому числі ПДВ, 20%:</td>
+							<td>${tax} грн</td>
+						</tr>
+						<tr>
+							<td colspan="3">Загальна вартість товару:</td>
+							<td>${sumCostProduct} грн</td>
+						</tr>
+						<tr class="check__thank">
+							<td colspan="4">Дякуємо за покупку!</td>
+						</tr>
+					</table>
+			</div>`);
+	</script>
+</body>
+</html>

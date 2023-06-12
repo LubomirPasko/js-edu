@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/work-style.css">
+    <title>Task 4</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header></header>
+        <main class="work">
+            <div class="work__block">
+                <div class="work__container">
+					<h1 class="work__title">Задача 3</h1>
+					<div class="work__back work__back_button">
+						<a class="work__link" href="../index.html">< BACK</a>
+					</div>
+					<p class="list-work__text list-work__text_mgb">
+						Дано вартість одиниці товару і кількість. Знайти загальну вартість та ПДВ (5% від загальної вартості).
+					</p>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+    </div>
+	<script>
+		//Приймаю необхідні дані і присвоюю їх змінним
+		let costOfProduct = parseFloat(prompt('Яка вартість товару?', '0.00'));
+		let quantityOfProduct = parseFloat(prompt('Яка кількість товару?', '0.000'));
+		const TAX_PERCENT  = 5 / 100;
+		//Знаходжу результат
+		let totalCostOfProduct  = Number((costOfProduct * quantityOfProduct).toFixed(2));
+		let taxValueAdded = Number((totalCostOfProduct * TAX_PERCENT).toFixed(2));
+		//Виводжу результат на сторінку
+		document.write(`<div class="solution">
+			Результат виконання:<br><br>
+			Загальна вартість товару: ${totalCostOfProduct} грн<br>
+			В тому числі податок: ${taxValueAdded} грн<br>
+			</div>`);
+	</script>
+</body>
+</html>
