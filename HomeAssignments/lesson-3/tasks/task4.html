@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/work-style.css">
+    <title>Task 4</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header></header>
+        <main class="work">
+            <div class="work__block">
+                <div class="work__container">
+					<h1 class="work__title">Задача 4</h1>
+					<div class="work__back work__back_button">
+						<a class="work__link" href="../index.html">< BACK</a>
+					</div>
+					<p class="list-work__text list-work__text_mgb">
+						З клавіатури вводиться вік людини. Вивести на екран ким він є (дитиною у садочку, школярем, студентом, працівником, пенсіонером).
+					</p>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+    </div>
+	<script>
+		//Приймаю необхідні дані і присвоюю їх змінним
+		const HUMAN_AGE = parseInt(prompt('Введіть Ваш вік для класифікації', '33'))
+		let message;
+		//Знаходжу результат
+		if (HUMAN_AGE <= 0 || HUMAN_AGE >= 130) message = 'не вірно ввели вік.'
+		else if (HUMAN_AGE <= 5) message = 'дитина в садочку'
+		else if (HUMAN_AGE <= 16) message = 'школяр'
+		else if (HUMAN_AGE <= 21) message = 'студент'
+		else if (HUMAN_AGE <= 60) message = 'працівник'
+		else message = 'пенсіонер'
+		//Виводжу результат на сторінку
+		document.write(`<div class="solution">
+			Результат виконання:<br><br>
+			Ви ${message}
+			</div>`);
+	</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/work-style.css">
+    <title>Task 1</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header></header>
+        <main class="work">
+            <div class="work__block">
+                <div class="work__container">
+					<h1 class="work__title">Задача 1</h1>
+					<div class="work__back work__back_button">
+						<a class="work__link" href="../index.html">< BACK</a>
+					</div>
+					<p class="list-work__text list-work__text_mgb">
+						З клавіатури вводяться імена двох дітей та кількість у них цукерок. Вивести не екран ім’я тієї дитини, у якої кількість цукерок є більшою, або вивести, що кількість однакова.
+					</p>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+    </div>
+	<script>
+		//Приймаю необхідні дані і присвоюю їх змінним
+		const NAME_CHILD_1 = prompt("Введіть ім'я першої дитини", "Анастасія");
+		const AMOUNT_SWEETS_CHILD_1 = parseInt(prompt(`Введіть кількість цукерок у ${NAME_CHILD_1}`))
+		const NAME_CHILD_2 = prompt("Введіть ім'я длугої дитини", "Олег");
+		const AMOUNT_SWEETS_CHILD_2 = parseInt(prompt(`Введіть кількість цукерок у ${NAME_CHILD_2}`))
+		let resultComparison
+		//Знаходжу результат
+		if (AMOUNT_SWEETS_CHILD_1 > AMOUNT_SWEETS_CHILD_2) resultComparison = `${NAME_CHILD_1} має більше цукерок`
+		else if (AMOUNT_SWEETS_CHILD_1 < AMOUNT_SWEETS_CHILD_2) resultComparison = `${NAME_CHILD_2} має більше цукерок`
+		else resultComparison = "Кількість цукерок у дітей однакова"
+		//Виводжу результат на сторінку
+		document.write(`<div class="solution">
+			Результат виконання:<br><br>
+			${resultComparison}
+			</div>`);
+	</script>
+</body>
+</html>
