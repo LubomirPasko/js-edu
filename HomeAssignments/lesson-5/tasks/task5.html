@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/work-style.css">
+    <title>Task 5</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header></header>
+        <main class="work">
+            <div class="work__block">
+                <div class="work__container">
+					<h1 class="work__title">Задача 5</h1>
+					<div class="work__back work__back_button">
+						<a class="work__link" href="../index.html">< BACK</a>
+					</div>
+					<p class="list-work__text list-work__text_mgb">
+						З клавіатури вводиться назва категорії водія (А-мотоцикл, В-легковий автомобіль, С-вантажний автомобіль). Вивести на екран назву транспортного засобу, яким він може керувати.
+					</p>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+    </div>
+	<script>
+		//Приймаю необхідні дані і присвоюю їх змінній
+		let category = prompt('Введіть категорію Ваших водійських прав A, B, C', 'A').toUpperCase()
+		let message
+		//Знаходжу результат
+		switch (category) {
+			case "A": message = 'Мотоцикл'
+			break
+			case "B": message = 'Легковий автомобіль'
+			break
+			case "C": message = 'Вантажний автомобіль'
+			break
+			default: message = 'Ви зробили помилку в категорії прав' 
+		}
+		//Виводжу результат на сторінку
+		document.write(`<div class="solution">
+		Доступна категорія прав: ${message}
+			</div>`);
+	</script>
+</body>
+</html>

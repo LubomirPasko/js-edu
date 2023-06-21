@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/work-style.css">
+    <title>Task 3</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header></header>
+        <main class="work">
+            <div class="work__block">
+                <div class="work__container">
+					<h1 class="work__title">Задача 10</h1>
+					<div class="work__back work__back_button">
+						<a class="work__link" href="../index.html">< BACK</a>
+					</div>
+					<p class="list-work__text list-work__text_mgb">
+						Задача 10. Знайти суму всіх непарних чисел, що знаходяться між заданими користувачем числами.
+					</p>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+    </div>
+	<script>
+		//Прийняти два числа і зробити їх діапазоном виконання циклу, потім перебрати всі непарні і додати їх, вивести в змінну
+		let startRange = parseInt(prompt('Введіть початок діапазону для обчисленнь', 1))
+		let endRange = parseInt(prompt('Введіть кінець діапазону для обчисленнь', 100))
+		let sumOfOddNumbers = 0;
+		//це тут для того, якщо користувач не правильно введе початок і кінець циклу - тоді все зламається (зробив для додатніх чисел)
+		if (startRange > endRange) {
+			let exchangeVar = startRange;
+			startRange = endRange;
+			endRange = exchangeVar;
+		}
+		for (let i = startRange; i <= endRange; i++) {
+			if (i%2 !== 0) sumOfOddNumbers += i;
+		}
+		//Виводжу результат на сторінку
+		document.write(`<div class="solution">
+				Результат виконання:<br><br>
+				Сума всіх непарних чисел в діапазоні від ${startRange} до  ${endRange}: <br> <br>
+				${sumOfOddNumbers}
+			</div>`);
+	</script>
+</body>
+</html>
