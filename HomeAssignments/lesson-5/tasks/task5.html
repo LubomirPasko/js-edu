@@ -13,12 +13,12 @@
         <main class="work">
             <div class="work__block">
                 <div class="work__container">
-					<h1 class="work__title">Задача 5</h1>
+					<h1 class="work__title">Задача -1</h1>
 					<div class="work__back work__back_button">
 						<a class="work__link" href="../index.html">< BACK</a>
 					</div>
 					<p class="list-work__text list-work__text_mgb">
-						З клавіатури вводиться назва категорії водія (А-мотоцикл, В-легковий автомобіль, С-вантажний автомобіль). Вивести на екран назву транспортного засобу, яким він може керувати.
+						Вивести на екран номери місяців весни і літа (від 3 до 8)
 					</p>
                 </div>
             </div>
@@ -27,21 +27,16 @@
     </div>
 	<script>
 		//Приймаю необхідні дані і присвоюю їх змінній
-		let category = prompt('Введіть категорію Ваших водійських прав A, B, C', 'A').toUpperCase()
-		let message
-		//Знаходжу результат
-		switch (category) {
-			case "A": message = 'Мотоцикл'
-			break
-			case "B": message = 'Легковий автомобіль'
-			break
-			case "C": message = 'Вантажний автомобіль'
-			break
-			default: message = 'Ви зробили помилку в категорії прав' 
+		let result = '';
+		const firstMonthNumber = 3;
+		const lastMonthNumber = 8;
+		for (let i = firstMonthNumber; i <= lastMonthNumber; i++) {
+			result += `${i} `;
 		}
+		//Знаходжу результат
 		//Виводжу результат на сторінку
 		document.write(`<div class="solution">
-		Доступна категорія прав: ${message}
+		Номери місяців літа: ${result}
 			</div>`);
 	</script>
 </body>

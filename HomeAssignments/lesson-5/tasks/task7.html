@@ -13,68 +13,34 @@
             <main class="work">
                 <div class="work__block">
                     <div class="work__container">
-                        <h1 class="work__title">Задача 7</h1>
+                        <h1 class="work__title">Задача 1</h1>
                         <div class="work__back work__back_button">
                             <a class="work__link" href="../index.html"
                                 >< BACK</a
                             >
                         </div>
                         <p class="list-work__text list-work__text_mgb">
-                            З клавіатури вводиться номер місяця. Вивести до якої
-                            пори він відноситься
-                        </p>
+							Вивести з використанням циклів маркований список з випадковими числами (1-100). Кількість випадкових чисел вводиться користувачем.
                     </div>
                 </div>
             </main>
             <footer></footer>
         </div>
         <script>
-            //ЩОБ НЕ ЗАМОРОЧУВАТИСЬ (АЛЕ ЯКЩО БУДЕ БАГАТО ЧИСЕЛ, ТО БУДЕ ПРОСТИРАДЛО)
-            /* 		//Приймаю необхідні дані і присвоюю їх змінним 
-		const MONTH_NUMBER = parseInt(prompt('Введіть номер місяця ніби січень - це 1 і тд. щоб зрозуміти до якої пори року він відноситься', '1'))
-		let message;
-		//Знаходжу результат
-		switch (MONTH_NUMBER) {
-			case 12:
-			case 1:
-			case 2: message = 'Зима'
-			break
-			case 3:
-			case 4:
-			case 5: message = 'Весна'
-			break
-			case 6:
-			case 7:
-			case 8: message = 'Літо'
-			break
-			case 9:
-			case 10:
-			case 11: message = 'Осінь'
-			break
-			default: message = 'Помилка.'
-		}
-		//Виводжу результат на сторінку
-		document.write(`<div class="solution"> 
-			Ви ввели наступний номер місяця: ${MONTH_NUMBER}<br>
-			Пора року: ${message}
-			</div>`); */
-            // АБО ЯКЩО ВЕЛИКІ ВІДРІЗКИ ЧИСЕЛ, ТО ПРОСТІШЕ ТАК:
-            const MONTH_NUMBER_2 = parseInt(prompt("Введіть номер місяця ніби січень - це 1 і тд. щоб зрозуміти до якої пори року він відноситься", "1"));
-            const WINTER_SEASON = 2;
-            const WINTER_LAST_MONTH = 12;
-            const SPRING_SEASON = 5;
-            const SUMMER_SEASON = 8;
-            let message;
-            //Приймаю необхідні дані і присвоюю їх змінним
-            if (MONTH_NUMBER_2 <= 0 || MONTH_NUMBER_2 > WINTER_LAST_MONTH) message = "Помилка.";
-            else if (MONTH_NUMBER_2 <= 2 || MONTH_NUMBER_2 === WINTER_LAST_MONTH) message = "Зима";
-            else if (MONTH_NUMBER_2 <= SPRING_SEASON) message = "Весна";
-            else if (MONTH_NUMBER_2 <= SUMMER_SEASON) message = "Літо";
-            else message = "Осінь";
+			//створити prompt для вводу кількості разів виконання циклу. А всередині вставити рандом від 1 до 100 і все це циклом в теги
+			//далі в змінну і на вивід
+			const numberOfItems = parseInt(prompt('Введіть кількість пунктів списку', 5))
+			let listItems = '';
+
+			for (let i = 1; i <= numberOfItems; i++) {
+				let listNumber = Math.floor(Math.random()*(100-1+1)+1);
+				listItems += `<li>${listNumber}</li>`;
+			}
+			const resultList = `<ul>${listItems}</ul>`;
             //Виводжу результат на сторінку
-            document.write(`<div class="solution"> 
-				Ви ввели наступний номер місяця: ${MONTH_NUMBER_2}<br>
-				Пора року: ${message}
+            document.write(`<div class="solution">
+				Маркований список від 1 до ${numberOfItems} (в стилях стоїть обнулення стилів, тому без bullet):<br><br>
+				${resultList}
 			</div>`);
         </script>
     </body>
