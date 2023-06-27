@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../css/work-style.css" />
+        <title>Task 2</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header></header>
+            <main class="work">
+                <div class="work__block">
+                    <div class="work__container">
+                        <h1 class="work__title">Задача 2.1</h1>
+                        <div class="work__back work__back_button">
+                            <a class="work__link" href="../index.html"
+                                >< BACK</a
+                            >
+                        </div>
+                        <p class="list-work__text list-work__text_mgb">
+							Відобразити рівнобедренний трикутник за допомогою символів «о»
+                        </p>
+                    </div>
+                </div>
+            </main>
+            <footer></footer>
+        </div>
+        <script>
+			let result = '';
+			let side = 7;
+			for (let i = 1; i <= side; i++) {
+				for (let j = 1; j <= side-i; j++) {
+					result += '&nbsp;'; //'&nbsp;'
+				}
+				for (let j = 1; j <= i; j++) {
+					result += 'o';
+				}
+				result += `<br>`
+			}
+			for (let p = side; p > 1; p--) {
+				for (let j = p; j <= side; j++) { //код виконується лише раз, бо умова початку j = p = 7 і умова закінчення <= 7 
+					result += '&nbsp;'; // тут j  став уже 6, бо p батьківського зменшився на 1 і тд. і цикл виконався 2 рази вивівши пробіли
+				}
+				for (let j = 1; j < p; j++) {
+					result += 'o';
+				}
+				/* for (let j = 0; j < array.length; j++) {
+					
+				} */
+				result += `<br>`
+			}
+		//Виводжу результат на сторінку
+		document.write(`<div class="solution">
+			Результат виконання(я намалював ромб, бо хотів зрозуміти як це працює):<br><br>
+			${result}
+			</div>`);
+        </script>
+    </body>
+</html>

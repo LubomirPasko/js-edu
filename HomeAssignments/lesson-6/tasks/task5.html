@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/work-style.css">
+    <title>Task 5</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header></header>
+        <main class="work">
+            <div class="work__block">
+                <div class="work__container">
+					<h1 class="work__title">Задача 23</h1>
+					<div class="work__back work__back_button">
+						<a class="work__link" href="../index.html">< BACK</a>
+					</div>
+					<p class="list-work__text list-work__text_mgb">
+						Розпочавши тренування, спортсмен першого дня пробіг 10 км. Щодня він збільшував денну норму на 10%
+						від норми попереднього дня. Який сумарний шлях пробіжить спортсмен за 7 днів? 
+						Якого дня вперше спортсмен пробіжить понад 20 км? Якого дня вперше сумарний шлях перевищить 60 км?
+					</p>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+    </div>
+	<script>
+		const increasingDistance = 10;
+		let trainingDistance = 1;
+		const distance = 60;
+		let totalDistance = 0;
+		let result1;
+		let result2;
+		let result3;
+		// Розпочавши тренування, спортсмен першого дня пробіг 10 км. Щодня він збільшував денну норму на 10%
+		// від норми попереднього дня. Який сумарний шлях пробіжить спортсмен за 7 днів? 
+		for (let i = 1; i <= 7; i++) {
+			trainingDistance *= 1+increasingDistance/100;
+			result1 = `За ${i} днів тренувань, відстань яку спортсмен почав пробігати склала: ${trainingDistance.toFixed(3)} км.`
+		}
+		// Якого дня вперше спортсмен пробіжить понад 20 км?
+		trainingDistance = 1;
+		for (let j = 1; ; j++) {
+			trainingDistance *= 1+increasingDistance/100;
+			if (trainingDistance >= 20) {
+				result2 = `За ${j} дні спортсмен почав пробігати відстань ${trainingDistance.toFixed(3)} км. `
+				break
+			};
+		}
+		// Якого дня вперше сумарний шлях перевищить 60 км?
+		trainingDistance = 1;
+		
+		for (let k = 1; ; k++) {
+			trainingDistance *= 1+increasingDistance/100;
+			totalDistance += trainingDistance;
+			if (totalDistance >= distance) {
+				result3 = `Всього спортсмен пробіг ${totalDistance.toFixed(3)} км на ${k} день тренувань.`;
+				break
+			}
+		}
+		//Знаходжу результат
+		//Виводжу результат на сторінку
+		document.write(`<div class="solution">
+			Результат:<br><br>
+			${result1}<br><br>
+			${result2}<br><br>
+			${result3}
+			</div>`);
+	</script>
+</body>
+</html>

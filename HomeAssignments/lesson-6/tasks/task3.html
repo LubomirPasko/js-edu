@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/work-style.css">
+    <title>Task 3</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header></header>
+        <main class="work">
+            <div class="work__block">
+                <div class="work__container">
+					<h1 class="work__title">Задача 5</h1>
+					<div class="work__back work__back_button">
+						<a class="work__link" href="../index.html">< BACK</a>
+					</div>
+					<p class="list-work__text list-work__text_mgb">
+						Інвестор вклав S грн на 20 років під 20% річних. Визначити за допомогою циклів суму, яку він одержить (без оподаткування).
+					</p>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+    </div>
+	<script>
+		const amountOfMoney = Math.floor(1+Math.random()*(100000-1+1));
+		let result = amountOfMoney; //я використовую тут змінну лише для виводу кінцевого результату amountOfMoney не змінюючи, можна обійтись і без неї.
+		const yearPercent = 20;
+		const years = 20;
+		for (let i = 0; i < years; i++) {
+			result *= (1 + yearPercent /100); //число * на 1.2
+		}
+		document.write(`<div class="solution">
+			Результат виконання:<br><br>
+			Через ${years} років ви отримаєте ${result.toFixed(2)} грн, якщо вкладете ${amountOfMoney} грн під ${yearPercent}% річнних*.<br><br>
+			*при умові нарахування відсотків щороку на всю вкладену суму та відсотки з попередніх років.
+			</div>`);
+	</script>
+</body>
+</html>

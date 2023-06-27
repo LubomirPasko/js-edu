@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/work-style.css">
+    <title>Task 4</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header></header>
+        <main class="work">
+            <div class="work__block">
+                <div class="work__container">
+					<h1 class="work__title">Задача 6</h1>
+					<div class="work__back work__back_button">
+						<a class="work__link" href="../index.html">< BACK</a>
+					</div>
+					<p class="list-work__text list-work__text_mgb">
+						Інвестор вклав S грн на 20 років під 20% річних, податок складає 5% від суми прибутку.
+						Визначити за допомогою циклів суму, яку він одержить.
+					</p>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+    </div>
+	<script>
+	const amountOfMoney = Math.floor(1+Math.random()*(100000-1+1));
+		let result = amountOfMoney; //я використовую тут змінну лише для виводу кінцевого результату amountOfMoney не змінюючи, можна обійтись і без неї.
+		const yearPercent = 20;
+		const annualTax = 5;
+		let totalTax = 0; //Можна обійтись, просто хочу вивести загальний податок.
+		const years = 20;
+		
+		for (let i = 0; i < years; i++) {
+			let taxYear = ((1+yearPercent/100)*result-result)*(annualTax/100); //податок вираховується щорічно від суми прибутку
+			result = result*(1+yearPercent/100)-taxYear;
+			totalTax += taxYear; 
+		}
+		document.write(`<div class="solution">
+			Результат виконання:<br><br>
+			Через ${years} років ви отримаєте ${result.toFixed(2)} грн, якщо вкладете ${amountOfMoney} грн під ${yearPercent}% річнних та ${annualTax}% щорічного податку на дохід*.<br><br>
+			*при умові нарахування відсотків щороку на всю вкладену суму та ${annualTax} % податку на щорічний дохід.<br><br>
+			Загальна сума податку ${totalTax.toFixed(2)}
+			</div>`);
+	</script>
+</body>
+</html>
