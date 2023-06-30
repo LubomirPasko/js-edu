@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/work-style.css">
+    <title>CAD/POUND to CAD/KG</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header></header>
+        <main class="work">
+            <div class="work__block">
+                <div class="work__container">
+					<h1 class="work__title">CAD/POUND to CAD/KG</h1>
+					<div class="work__back work__back_button">
+						<a class="work__link" href="../index.html">< BACK</a>
+					</div>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+    </div>
+	<script>
+		//Приймаю необхідні дані і присвоюю їх змінним (використовую parseFloat, бо числа можуть бути дійсними)
+		let valueToConvert = parseFloat(prompt('Введи ціну долл/фунт', 1.99))
+
+		let result = valueToConvert*2.20264
+		document.write(`<div class="solution">
+			Вартість товару CAD/POUND:  ${valueToConvert} CAD<br><br>
+			Вартість товару CAD/KG:     ${result.toFixed(2)} CAD<br>
+			</div>`);
+	</script>
+</body>
+</html>

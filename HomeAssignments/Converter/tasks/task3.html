@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../css/work-style.css" />
+        <title>Pound To Kg</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header></header>
+            <main class="work">
+                <div class="work__block">
+                    <div class="work__container">
+                        <h1 class="work__title">Barbell POUND to KG</h1>
+                        <div class="work__back work__back_button">
+                            <a class="work__link" href="../index.html"
+                                >< BACK</a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer></footer>
+        </div>
+        <script>
+            //Приймаю необхідні дані і присвоюю їх змінним
+            const valueToConvert = parseFloat(
+                prompt("Введи вагу в фунтах на одній стороні грифу", 15)
+            );
+
+            let result = valueToConvert * 0.4536 * 2 + 20;
+            //Виводжу результат на сторінку за допомогою інтерполяції
+            document.write(`<div class="solution">
+			Вага на одній стороні в POUND: ${valueToConvert} pounds<br><br>
+			Вага в KG всієї штанги: ${result.toFixed(2)} kg<br>
+			</div>`);
+        </script>
+    </body>
+</html>
