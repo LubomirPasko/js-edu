@@ -25,11 +25,14 @@
 	<script>
 		//Приймаю необхідні дані і присвоюю їх змінним (використовую parseFloat, бо числа можуть бути дійсними)
 		let valueToConvert = parseFloat(prompt('Введи ціну долл/фунт'))
+		
 
 		let result = valueToConvert*2.20264
+		let resultTax = result*1.13
 		document.write(`<div class="solution">
 			Вартість товару CAD/POUND:  ${valueToConvert} CAD<br><br>
 			Вартість товару CAD/KG:     ${result.toFixed(2)} CAD<br>
+   			Вартість з податком 13%: ${resultTax} CAD <br>
 			</div>`);
 	</script>
 </body>
