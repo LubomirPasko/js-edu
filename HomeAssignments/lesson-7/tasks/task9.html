@@ -13,37 +13,49 @@
             <main class="work">
                 <div class="work__block">
                     <div class="work__container">
-                        <h1 class="work__title">Задача 15</h1>
+                        <h1 class="work__title">Задача 9</h1>
                         <div class="work__back work__back_button">
                             <a class="work__link" href="../index.html"
                                 >< BACK</a
                             >
                         </div>
                         <p class="list-work__text list-work__text_mgb">
-							Користувача поступово вводить показники температури протягом року. Знайти середню температуру. Знайти максимальну і мінімальну річну температуру.
+							Дано покази температур (довільна кількість). 
+							Розробити функцію, яка дозволить підрахувати кількість від’ємних показів температури.
                     </div>
                 </div>
             </main>
             <footer></footer>
         </div>
         <script>
-			const tempMax = 35;
-			const tempMin = -25
-			let minTemperature = Infinity; //бо перше ж число яке ми будемо порівнювати, буде менше.
-			let maxTemperature = -Infinity; //бо перше ж число яке ми будемо порівнювати, буде більше.
-			let temperatureOfAllDays = 0;
-			for (let i = 1; i < 365; i++) {
-				let dayTemperature = Math.floor(tempMin + Math.random()*(tempMax-tempMin+1));
-				temperatureOfAllDays += dayTemperature;
-				if (dayTemperature > maxTemperature ) maxTemperature = dayTemperature;
-				if (dayTemperature < minTemperature) minTemperature = dayTemperature;
+			function randomFillFunc(min, max, arrForFill) {  //Функція що виводить рандомне число від мін до макс та наповнює масив, що в неї передається
+				let rand = 0;
+				for (let i = 0; i < arrForFill.length; i++) {
+					rand = Math.floor(min+(Math.random()*(max-min+1)))
+					arrForFill[i] = rand;
+				}
+				return arrForFill;
 			}
-			let result = temperatureOfAllDays/365;
+			function negativeTempCounter (arr) {
+				let negativeCounter = 0;
+				for (let i = 0; i < arr.length; i++) {
+					if (arr[i] < 0)  negativeCounter++;
+					
+				}
+				return negativeCounter;
+			}
+
+			const minTemp = -20;
+			const maxTemp = 30;
+			let tempArr = new Array(10);
+
+			tempArr = randomFillFunc(minTemp, maxTemp, tempArr);  //Спосіб не дуже. Тимчасове рішення.
+			const result = negativeTempCounter(tempArr);
+
 		document.write(`<div class="solution">
-			Середньорічна температура:<br><br>
-			${result.toFixed(1)} C<br>
-			Max temp: ${maxTemperature}<br>
-			Min temp: ${minTemperature}
+			Результат:<br><br>
+			З масиву температур:  ${tempArr}<br><br>
+			${result} від'ємних.<br>
 		</div>`);
         </script>
     </body>

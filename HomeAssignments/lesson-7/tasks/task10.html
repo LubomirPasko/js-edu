@@ -13,47 +13,53 @@
             <main class="work">
                 <div class="work__block">
                     <div class="work__container">
-                        <h1 class="work__title">Задача 14</h1>
+                        <h1 class="work__title">Задача 10</h1>
                         <div class="work__back work__back_button">
-                            <a class="work__link" href="../index.html"
-                                >< BACK</a
-                            >
+                            <a class="work__link" href="../index.html">< BACK</a>
                         </div>
                         <p class="list-work__text list-work__text_mgb">
-							Cash register. The user is informed of the amount he has to pay. The user gradually enters the amount of money until the amount is sufficient to pay for the goods (each time the user is informed how much more amount needs to be entered).
+							Дано покази температур (довільна кількість).
+							Розробити функцію, яка дозволить знайти середнє значення для додатних показів температури.
+						</p>
                     </div>
                 </div>
             </main>
             <footer></footer>
         </div>
         <script>
-			let paymentAmount = Math.floor(1+Math.random()*(1000-1+1)); //Від 1 до 1000
-			const amountToPay = paymentAmount;
-			alert (`The item price is ${amountToPay} doll. Please pay.`)
-			let result = '';
-			do {
-				let payment = parseInt(prompt('Enter the amount you want to pay', 100)); //100
-				paymentAmount -= payment; //900
-				if (paymentAmount > 0) alert (`${paymentAmount} doll less to pay`)
-				else if (paymentAmount < 0) {
-					alert (`Take back ${-paymentAmount} doll change. Thank you for your purchase!`)
-					result = `Item was bought for ${amountToPay} doll.`;
+			function randomFillFunc(min, max, arrForFill) {  //Функція що виводить рандомне число від мін до макс та наповнює масив, що в неї передається
+				let rand = 0;
+				for (let i = 0; i < arrForFill.length; i++) {
+				rand = Math.floor(min+(Math.random()*(max-min+1)))
+				arrForFill[i] = rand;
 				}
-				else {
-					alert ('Thank you for your purchase!')
-					result = `Item was bought for ${amountToPay} doll.`;
-				}
+				return arrForFill;
 			}
-			while (paymentAmount > 0)
+			function arithmeticMeanPositiveTemp (arr) {
+				let temps = 0;
+				let positTempCounter = 0;
+				for (let i = 0; i < arr.length; i++) {
+					if (arr[i] > 0) {
+						temps += arr[i];
+						positTempCounter++;
+					}
+				}
+				return temps / positTempCounter;
+			}
+
+			const minTemp = -20;
+			const maxTemp = 30;
+			let tempArr = new Array(10);
+
+			tempArr = randomFillFunc(minTemp, maxTemp, tempArr);  //Спосіб не дуже. Тимчасове рішення.
+			const result = arithmeticMeanPositiveTemp(tempArr);
+
             //Виводжу результат на сторінку
-            document.write(`<div class="solution">Result:<br><br>${result}</div>`);
-/* 			let j = 10;
-			let i;
-			do {
-				i = 1;
-				j = j - i;
-			}
-			while (j > 0) */
+			document.write(`<div class="solution">
+			Результат:<br><br>
+			З масиву температур:  ${tempArr}<br><br>
+			Середнє арифметичне всіх додатніх температур становить: ${result.toFixed(1)} градусів.<br>
+		</div>`);
         </script>
     </body>
 </html>
