@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/work-style.css">
+    <title>Task 5</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header></header>
+        <main class="work">
+            <div class="work__block">
+                <div class="work__container">
+					<h1 class="work__title">Задача 4</h1>
+					<div class="work__back work__back_button">
+						<a class="work__link" href="../index.html">< BACK</a>
+					</div>
+					<p class="list-work__text list-work__text_mgb">
+						Створити функцію, яка для 10 заданих чисел знаходить одночасно декілька результатів:
+						кількість парних, кількість додатних, кількість більших за 100.
+					</p>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+    </div>
+	<script>
+		//наповнив масив рандомними числами
+
+	
+		//Функції
+		//Задачу виконую, але краще зробити три маленькі функції для кожного результату, бо отримувати масив з функції - не краща ідея.
+		function randomFillFunc(min, max, arrForFill) {  //Функція що виводить рандомне число від мін до макс та наповнює масив, що в неї передається
+			let rand = 0;
+			for (let i = 0; i < arrForFill.length; i++) {
+				rand = Math.floor(min+(Math.random()*(max-min+1)))
+				arrForFill[i] = rand;
+			}
+			return arrForFill;
+		}
+		function evenPlusMoreThan100 (someArr) {
+			let evenRes = 0;
+			let plusRes = 0;
+			let moreThanHundredRes = 0;
+			let res;
+			for (let j = 0; j < someArr.length; j++) {
+				if(someArr[j]%2 === 0) evenRes++;
+			}
+			for (let k = 0; k < someArr.length; k++) {
+				if (someArr[k] > 0) plusRes++; 
+			}
+			for (let l = 0; l < someArr.length; l++) {
+				if (someArr[l] > 100) moreThanHundredRes++;
+			}
+			return res = [evenRes, plusRes, moreThanHundredRes] //Спочатку думав вивести три значення в вигляді довжелезного результату інтерпольованою строкою
+			// але потім подумав чому б не записати результат в масив. 
+		}
+
+		
+		let num = new Array(10); //візьму масив довжиною в 10 чисел для більшої розманітності чисел
+		const minNum = -10; //треба переписати як функцію
+		const maxNum = 150;
+
+		num = randomFillFunc(minNum, maxNum, num);
+		let result = evenPlusMoreThan100(num);
+		//Виводжу результат на сторінку
+		document.write(`<div class="solution">
+			Було згенеровано наступні числа: ${num}<br><br>
+			З них:<br> парних - ${result[0]} шт<br>
+			додатніх - ${result[1]} шт<br>
+			більше 100 - ${result[2]} шт
+			</div>`);
+	/* 		function moreZero (myArray) {
+				let res = 0;
+				for (let i = 0; i < myArray.length; i++) {
+					if (myArray[i] > 0) res++
+				}
+				return res;
+			}
+
+			let arr = [1, -1, -2, 3]
+
+			let result = moreZero(arr)
+
+			document.write(result) */
+
+
+
+
+	</script>
+</body>
+</html>

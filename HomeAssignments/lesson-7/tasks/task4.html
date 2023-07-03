@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/work-style.css">
+    <title>Task 4</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header></header>
+        <main class="work">
+            <div class="work__block">
+                <div class="work__container">
+					<h1 class="work__title">Задача 3</h1>
+					<div class="work__back work__back_button">
+						<a class="work__link" href="../index.html">< BACK</a>
+					</div>
+					<p class="list-work__text list-work__text_mgb">
+						Створити окремі функції, які для 4 чисел знаходять:<br>
+						1)суму;<br>
+						2)добуток;<br>
+						3)середнє арифметичне;<br>
+						4)мінімальне значення. 
+					</p>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+    </div>
+	<script>
+		//або num в аргумент і далі елементи всередині функції через num[0], num[1], num[2], num[3]
+		function getSum(num1, num2, num3, num4) {
+			let sum = num1 + num2 + num3 + num4;
+			return sum;
+		}
+		function getMulti(num1, num2, num3, num4) {
+			return num1 * num2 * num3 * num4;
+		}
+		function getArithmeticMean(num1, num2, num3, num4) {
+			return ((num1 + num2 + num3 + num4)/arguments.length);
+		}
+		function getMinimal(num1, num2, num3, num4/* num */) {
+			let min = num1;
+			if (num2 < min) min = num2;
+			if (num3 < min) min = num3;
+			if (num4 < min) min = num4;
+			return min;	
+			}
+		//Вирішив так зробити: заповнити масив за допомогою циклу рандомними числами.
+		let num = [];
+		for (let i = 0; i < 4; i++) {
+			num[i] = parseInt(prompt(`Введіть ${i+1} число, яке буде обчислено`, 6));
+		}
+		//Знайшов метод apply, що дозволяє передавати масив, як аргумент функції. Може не правильно, але хай буде.
+		const resultSum = getSum.apply(null, num);
+		const resultMultiply = getMulti.apply(null, num);
+		const resultArithmMean = getArithmeticMean.apply(null, num);
+		const resultArithmeticMean = getMinimal.apply(null, num)
+
+		document.write(`<div class="solution">
+			Результат виконання:<br><br>
+			Сума чотирьох введених чисел: ${resultSum}<br>
+			Добуток чотирьох введених чисел: ${resultMultiply}<br>
+			Середнє арифметичне введених чисел: ${resultArithmMean}<br>
+			Мінімальне серед введених чисел: ${resultArithmeticMean}
+			</div>`);
+	</script>
+</body>
+</html>

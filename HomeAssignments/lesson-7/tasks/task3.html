@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/work-style.css">
+    <title>Task 3</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header></header>
+        <main class="work">
+            <div class="work__block">
+                <div class="work__container">
+					<h1 class="work__title">Задача 2</h1>
+					<div class="work__back work__back_button">
+						<a class="work__link" href="../index.html">< BACK</a>
+					</div>
+					<p class="list-work__text list-work__text_mgb">
+						Створити функцію, яка за номером дня дозволяє з’ясувати чи є цей день робочим.
+					</p>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+    </div>
+	<script>
+/* 		let workDayAnalyser = function (day) {
+			let res;
+			switch (day) {
+				case 1:
+				case 2:
+				case 3:
+				case 4:
+				case 5:
+					res = 'робочий';
+					break
+				case 6:
+				case 7:
+					res = 'вихідний'
+					break;
+				default:
+					res = 'не існує'
+					break;
+			}
+			return res;
+		} */
+		const workDayAnalyser = function (day) {
+			let res;
+			if (day >=1 && day <= 5) res = 'робочий';
+			else if (day >= 6 && day <= 7) res = 'вихідний';
+			else res = 'не існує'
+			return res;
+		}
+		
+		const dayOfWeek = parseInt(prompt('Введіть номер дня тижня', 1))
+		const result = `День тижня під номером ${dayOfWeek} - ${workDayAnalyser(dayOfWeek)}.`
+		document.write(`<div class="solution">
+			Результат виконання:<br><br>
+			${result}
+			</div>`);
+			      //Задача. Створити функцію, яка дозволяє визначити чи є вказаний день робочим (1-5)
+      // function isWorkingDay(dayNumber) {
+      //   return dayNumber >= 1 && dayNumber <= 5
+      // }
+
+      // const userDayNumber = parseInt(prompt('Введіть номер дня'))
+
+      // const resultMessage = isWorkingDay(userDayNumber)
+      //   ? 'День робочий'
+      //   : 'День не є робочим'
+
+      // document.write(resultMessage)
+	</script>
+</body>
+</html>

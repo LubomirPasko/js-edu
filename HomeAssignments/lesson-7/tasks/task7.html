@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../css/work-style.css" />
+        <title>Task 7</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header></header>
+            <main class="work">
+                <div class="work__block">
+                    <div class="work__container">
+                        <h1 class="work__title">Задача 6</h1>
+                        <div class="work__back work__back_button">
+                            <a class="work__link" href="../index.html">< BACK</a>
+                        </div>
+                        <p class="list-work__text list-work__text_mgb">
+							Створити функцію, яка створює таблицю з вказаною кількістю рядків і стовпців (таблиця заповнюється заданим фіксованим повідомленням).
+                    </div>
+                </div>
+            </main>
+            <footer></footer>
+        </div>
+        <script>
+			//створити prompt для вводу кількості разів виконання циклу. А всередині вставити рандом від 1 до 100 і все це циклом в теги
+			//далі в змінну і на вивід
+			const rowsTable = parseInt(prompt('Введіть кількість рядків таблиці', 4));
+			const dataTable = parseInt(prompt('Введіть кількість стовпців таблиці', 3));
+			const infoTable = prompt('Введіть наповнення ячейки таблиці','Hello')
+			function getTable (rowsTable, dataTable, infoTable) {
+				let resultForTable = '';
+				let result = '';
+				for (let i = 0; i < rowsTable; i++) {
+					let tableRow = '';
+					for (let j = 0; j < dataTable; j++) {
+						tableRow += `<td>${infoTable}</td>`; 
+					}
+					resultForTable += `<tr>${tableRow}</tr>`;
+				}
+				result +=  `<table class="solution__data">${resultForTable}</table>`
+				return result;
+			}
+			const result = getTable(rowsTable, dataTable, infoTable)
+            //Виводжу результат на сторінку
+            document.write(`<div class="solution"><br><br>
+				Результат: <br><br>
+				${result}
+			</div>`);
+        </script>
+    </body>
+</html>
