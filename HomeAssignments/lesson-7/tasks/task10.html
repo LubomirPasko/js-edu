@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../css/work-style.css" />
+        <title>Task 7</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header></header>
+            <main class="work">
+                <div class="work__block">
+                    <div class="work__container">
+                        <h1 class="work__title">Задача 10</h1>
+                        <div class="work__back work__back_button">
+                            <a class="work__link" href="../index.html">< BACK</a>
+                        </div>
+                        <p class="list-work__text list-work__text_mgb">
+							Дано покази температур (довільна кількість).
+							Розробити функцію, яка дозволить знайти середнє значення для додатних показів температури.
+						</p>
+                    </div>
+                </div>
+            </main>
+            <footer></footer>
+        </div>
+        <script>
+			function randomFillFunc(min, max, lengthArr) {  //Функція що виводить рандомне число від мін до макс 
+				let arr = [];
+				for (let i = 0; i < lengthArr; i++) {
+					let rand = Math.floor(min+(Math.random()*(max-min+1)))
+					arr.push(rand);
+				}
+				return arr;
+			}
+			function arithmeticMeanPositiveTemp (arr) {
+				let temps = 0;
+				let positTempCounter = 0;
+				for (let i = 0; i < arr.length; i++) {
+					if (arr[i] > 0) {
+						temps += arr[i];
+						positTempCounter++;
+					}
+				}
+				return temps / positTempCounter;
+			}
+
+			const minTemp = -20;
+			const maxTemp = 30;
+			const numberOfTemp = 10;
+
+			const tempArr = randomFillFunc(minTemp, maxTemp, numberOfTemp);
+			const result = arithmeticMeanPositiveTemp(tempArr);
+
+            //Виводжу результат на сторінку
+			document.write(`<div class="solution">
+			Результат:<br><br>
+			З масиву температур:  ${tempArr}<br><br>
+			Середнє арифметичне всіх додатніх температур становить: ${result.toFixed(1)} градусів.<br>
+		</div>`);
+        </script>
+    </body>
+</html>
