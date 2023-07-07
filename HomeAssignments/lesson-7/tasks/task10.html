@@ -27,13 +27,14 @@
             <footer></footer>
         </div>
         <script>
-			function randomFillFunc(min, max, arrForFill) {  //Функція що виводить рандомне число від мін до макс та наповнює масив, що в неї передається
+			function randomFillFunc(min, max, lengthArr) {  //Функція що виводить рандомне число від мін до макс 
+				let arr = [];
 				let rand = 0;
-				for (let i = 0; i < arrForFill.length; i++) {
-				rand = Math.floor(min+(Math.random()*(max-min+1)))
-				arrForFill[i] = rand;
+				for (let i = 0; i < lengthArr; i++) {
+					rand = Math.floor(min+(Math.random()*(max-min+1)))
+					arr[i] = rand;
 				}
-				return arrForFill;
+				return arr;
 			}
 			function arithmeticMeanPositiveTemp (arr) {
 				let temps = 0;
@@ -49,9 +50,9 @@
 
 			const minTemp = -20;
 			const maxTemp = 30;
-			let tempArr = new Array(10);
+			const numberOfTemp = 10;
 
-			tempArr = randomFillFunc(minTemp, maxTemp, tempArr);  //Спосіб не дуже. Тимчасове рішення.
+			const tempArr = randomFillFunc(minTemp, maxTemp, numberOfTemp);
 			const result = arithmeticMeanPositiveTemp(tempArr);
 
             //Виводжу результат на сторінку
