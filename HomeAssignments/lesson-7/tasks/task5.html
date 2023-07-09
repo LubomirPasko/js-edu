@@ -46,13 +46,9 @@
 			let moreThanHundredRes = 0;
 			let res;
 			for (let j = 0; j < someArr.length; j++) {
-				if(someArr[j]%2 === 0) evenRes++;
-			}
-			for (let k = 0; k < someArr.length; k++) {
-				if (someArr[k] > 0) plusRes++; 
-			}
-			for (let l = 0; l < someArr.length; l++) {
-				if (someArr[l] > 100) moreThanHundredRes++;
+				if (someArr[j]%2 === 0) evenRes++;
+				if (someArr[j] > 0) plusRes++; 
+				if (someArr[j] > 100) moreThanHundredRes++;
 			}
 			return res = [evenRes, plusRes, moreThanHundredRes] //Спочатку думав вивести три значення в вигляді довжелезного результату інтерпольованою строкою
 			// але потім подумав чому б не записати результат в масив. 
@@ -77,16 +73,9 @@
 				}
 				return res;
 			}
-
 			let arr = [1, -1, -2, 3]
-
 			let result = moreZero(arr)
-
 			document.write(result) */
-
-
-
-
 	</script>
 </body>
 </html>
