@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../css/work-style.css" />
+        <title>Task 2</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header></header>
+            <main class="work">
+                <div class="work__block">
+                    <div class="work__container">
+                        <h1 class="work__title">Задача 2</h1>
+                        <div class="work__back work__back_button">
+                            <a class="work__link" href="../index.html"
+                                >< BACK</a
+                            >
+                        </div>
+                        <p class="list-work__text list-work__text_mgb">
+							Дано масив, який зберігає кількість відвідувачів магазину протягом тижня. Вивести на екран:
+							<ul>
+								<li>1. номери днів, протягом яких кількість відвідувачів була меншою за 20;</li>
+								<li>2. номери днів, коли кількість відвідувачів була мінімальною;</li>
+								<li>3. номери днів, коли кількість відвідувачів була максимальною;</li>
+								<li>4. загальну кількість клієнтів у робочі дні та окремо загальну кількість клієнтів на вихідних.</li>
+							</ul>
+                        </p>
+                    </div>
+                </div>
+            </main>
+            <footer></footer>
+        </div>
+        <script>
+		//Описую функції
+		function randomFillFunc(minVisitors, maxVisitors, days) {  //Функція що наповнює масив рандомними числами в указаному діапазоні
+				let arr = [];
+				for (let i = 0; i < days; i++) {
+					let rand = Math.floor(minVisitors+(Math.random()*(maxVisitors-minVisitors+1)))
+					arr.push(rand);
+				}
+				return arr;
+			}
+		// Less than 20 function
+		function visitorsLessThan20 (someArr) {
+			let result = [];
+			for (let i = 0; i < someArr.length; i++) {
+				if (someArr[i] < 20) result.push(i+1)
+			}
+			return result;
+		}
+		//Функція знаходить мінімальне значення масиву.
+		function minVisitorsValue (someArray) {
+			let minNumberVisitors = someArray[0];
+			for (let i = 1; i < someArray.length; i++) {
+				if (someArray[i] < minNumberVisitors) minNumberVisitors = someArray[i];
+			}
+			return minNumberVisitors;
+		}
+		//Перебираю значення масиву з еталонним мінімальним чи максимальним значенням.
+		function comparatorVisitorsDay (value, someArray) {
+			let result = [];
+			for (let i = 0; i < someArray.length; i++) {
+				if (value === someArray[i]) result.push(i+1);
+			}
+			return result;
+		}
+		//Знаходить максимальне значення масиву.
+		function maxVisitorsValue (someArray) {
+			let maxNumberVisitors = someArray[0];
+			for (let i = 1; i < someArray.length; i++) {
+				if (someArray[i] > maxNumberVisitors) maxNumberVisitors = someArray[i];
+			}
+			return maxNumberVisitors;
+		}
+		//Одна функція повертає два значення бо це ніби однотипа операція стосовно одного тижня, тому вирішив повернути масив з двох знвачень.
+		//Ніби логічно
+		function valueInWorkAndHolidays(someArray) {
+			let workDays = 0;
+			let result;
+			for (let i = 0; i < 5; i++) {
+				workDays += someArray[i];
+			}
+			let holidays = someArray[5]+someArray[6];
+			return result = [workDays, holidays];
+		}
+
+		//Я використаю попередній порівнювач значеннь.
+		  // function getMinValue(arr) {
+      //   let min = arr[0]
+      //   for (let i = 1; i < arr.length; i++) {
+      //     //Як змінюються номери елементів
+      //     if (arr[i] < min)
+      //       //Що треба зробити з кожним із елементів
+      //       min = arr[i]
+      //   }
+      //   return min
+      // }
+		//
+		const minVisitors = 0;
+		const maxVisitors = 50;
+		const days = 7;
+		const visitorsPerWeek = randomFillFunc(minVisitors, maxVisitors, days)  //масив з 7 елем і значеннями від 0 до 50
+
+		const daysWithVisitorsLessThan20 = visitorsLessThan20(visitorsPerWeek); //дні, коли відвідувачів було менше 20
+		const daysMinVisitors = comparatorVisitorsDay(minVisitorsValue(visitorsPerWeek), visitorsPerWeek); //В які дні найменше покупців
+		const daysMaxVisitors = comparatorVisitorsDay(maxVisitorsValue(visitorsPerWeek), visitorsPerWeek);//В які дні найбільше покупців
+		const workAndHolidaysVisitors = valueInWorkAndHolidays(visitorsPerWeek); //повертає масив
+
+		//Виводжу результат на сторінку
+		document.write(`<div class="solution">
+			Результат виконання:<br><br>
+			Кількість покупців щодня за тиждень: ${visitorsPerWeek};<br>
+			День, коли покупців було менше за 20: ${daysWithVisitorsLessThan20};<br>
+			В який день тижня було найменше покупців: ${daysMinVisitors};<br>
+			В який день тижня було найбільше покупців: ${daysMaxVisitors};<br>
+			Покупців у будні: ${workAndHolidaysVisitors[0]};<br>
+			Покупців на вихідних: ${workAndHolidaysVisitors[1]}.
+			</div>`);
+        </script>
+    </body>
+</html>
