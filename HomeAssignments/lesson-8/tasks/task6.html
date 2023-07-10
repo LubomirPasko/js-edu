@@ -13,17 +13,13 @@
         <main class="work">
             <div class="work__block">
                 <div class="work__container">
-					<h1 class="work__title">Задача 5</h1>
+					<h1 class="work__title">Задача 6</h1>
 					<div class="work__back work__back_button">
 						<a class="work__link" href="../index.html">< BACK</a>
 					</div>
 					<p class="list-work__text list-work__text_mgb">
-						Створити окремі функції, які переводять:
-						<ul>
-							<li>1. Сантиметри у дюйми;</li>
-							<li>2. Кілограми у фунти;</li>
-							<li>3. Кілометри у милі.</li>
-						</ul>
+						Дано послідовність цін товарів та назв (у окремих масивах).
+						Вивести на екран ті, які може собі дозволити користувач (кількість грошей задається).
 					</p>
                 </div>
             </div>
@@ -31,29 +27,29 @@
         <footer></footer>
     </div>
 	<script>
-		const inputLength = parseFloat(prompt('Введіть відстань в сантиметрах для конвертації в дюйми', 30))
-		const inputWeight = parseFloat(prompt('Введіть вагу в кілограмах для конвертації в фунти', 20))
-		const inputLengthKm = parseFloat(prompt('Введіть відстань в кілометрах для конвертації в милі', 15))
-		//cm to inch
-		function centimeterToInch (length) {
-			return length * 0.3937;
+		function youCanBuy (money, someArr) {
+			let result = [];
+			let min = someArr[0][0];
+				for (let j = 0; j < someArr.length; j++) { //Спочатку знаходжу мінімальне значення
+					if (someArr[j][0] < min) min = someArr[j][0]; 
+				}
+			for (let i = 0; i < someArr.length; i++) {
+				if (money >= someArr[i][0]) result.push(someArr[i][1]);
+				if (money < min) { //Порівнюю для виводу Нічого
+					result[0] = 'Нічого. Пора на роботку';
+					break;
+				}
+			}
+			return result;
 		}
-		// kg to pound
-		function kgToPound (weight) {
-			return weight * 2.2046;
-		}
-		//km to mile
-		function kmToMile (length) {
-			return length*0.6214;
-		}
-		//Приймаю необхідні дані і присвоюю їх змінній
 
+		const amountOfMoney =parseInt(prompt("Скільки в Вас є грошей", 40));
+		const pricesAndNameOfProduct = [[20, 'Каву в Кулінічах'], [3, 'Проїхатись на метро'],  [40, 'Штани'], [54, 'Літр палива, щоб лампочка не горіла:)'], [80, 'Біг-Мак']]
+		const result = youCanBuy(amountOfMoney, pricesAndNameOfProduct);
 		//Виводжу результат на сторінку
 		document.write(`<div class="solution"> 
 			Результат виконання:<br><br>
-			${inputLength} сантиметрів - це ${centimeterToInch(inputLength).toFixed(2)} дюймів, <br>
-			${inputWeight} кілограмів - це ${kgToPound(inputWeight).toFixed(2)} фунтів, <br>
-			${inputLengthKm} кілометрів - це ${kmToMile(inputLengthKm).toFixed(3)} миль.
+			Маючи ${amountOfMoney} грн. в кишені, можете собі дозволити: ${result.join(', ')}.
 			</div>`);
 	</script>
 </body>

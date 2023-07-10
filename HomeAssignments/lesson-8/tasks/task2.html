@@ -75,7 +75,8 @@
 			}
 			return maxNumberVisitors;
 		}
-		//Одна функція повертає два значення бо це ніби однотипа операція стосовно одного тижня, тому вирішив повернути масив з двох знвачень.
+		//Кількість клієнтів у робочі і вихідні
+		//Одна функція повертає два значення бо це ніби однотипна операція стосовно одного тижня, тому вирішив повернути масив з двох знвачень.
 		//Ніби логічно
 		function valueInWorkAndHolidays(someArray) {
 			let workDays = 0;
@@ -86,18 +87,7 @@
 			let holidays = someArray[5]+someArray[6];
 			return result = [workDays, holidays];
 		}
-
 		//Я використаю попередній порівнювач значеннь.
-		  // function getMinValue(arr) {
-      //   let min = arr[0]
-      //   for (let i = 1; i < arr.length; i++) {
-      //     //Як змінюються номери елементів
-      //     if (arr[i] < min)
-      //       //Що треба зробити з кожним із елементів
-      //       min = arr[i]
-      //   }
-      //   return min
-      // }
 		//
 		const minVisitors = 0;
 		const maxVisitors = 50;
