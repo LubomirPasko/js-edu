@@ -13,41 +13,103 @@
             <main class="work">
                 <div class="work__block">
                     <div class="work__container">
-                        <h1 class="work__title">Задача 6</h1>
+                        <h1 class="work__title">Задача 7</h1>
                         <div class="work__back work__back_button">
                             <a class="work__link" href="../index.html">< BACK</a>
                         </div>
                         <p class="list-work__text list-work__text_mgb">
-							Створити функцію, яка створює таблицю з вказаною кількістю рядків і стовпців (таблиця заповнюється заданим фіксованим повідомленням).
+							Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей за:
+							<ul>
+								<li>1. за весь рік;</li>
+								<li>2. у першій половині року;</li>
+								<li>3. у другій половині року;</li>
+								<li>4. за літо;</li>
+								<li>5. за ІІ квартал;</li>
+								<li>6. за парні місяці (з парними номерами);</li>
+								<li>7. за місяці, які є початковими у сезоні (весна, літо, осінь, зима).</li>
+							</ul>
+						</p>
                     </div>
                 </div>
             </main>
             <footer></footer>
         </div>
         <script>
-			//створити prompt для вводу кількості разів виконання циклу. А всередині вставити рандом від 1 до 100 і все це циклом в теги
-			//далі в змінну і на вивід
-			const rowsTable = parseInt(prompt('Введіть кількість рядків таблиці', 4));
-			const dataTable = parseInt(prompt('Введіть кількість стовпців таблиці', 3));
-			const infoTable = prompt('Введіть наповнення ячейки таблиці','Hello')
-			function getTable (rowsTable, dataTable, infoTable) {
-				let resultForTable = '';
-				let result = '';
-				for (let i = 0; i < rowsTable; i++) {
-					let tableRow = '';
-					for (let j = 0; j < dataTable; j++) {
-						tableRow += `<td>${infoTable}</td>`; 
-					}
-					resultForTable += `<tr>${tableRow}</tr>`;
+			function randomFillFunc(min, max, lengthArr) {  //Функція що виводить рандомне число від мін до макс 
+				let arr = [];
+				for (let i = 0; i < lengthArr; i++) {
+					let rand = Math.floor(min+(Math.random()*(max-min+1)))
+					arr.push(rand);
 				}
-				result +=  `<table class="solution__data">${resultForTable}</table>`
+				return arr;
+			}
+			function amountForYear(someArr) {
+				let result = 0;
+				for (let i = 0; i < someArr.length; i++) {
+					result += someArr[i];
+				}
 				return result;
 			}
-			const result = getTable(rowsTable, dataTable, infoTable)
+			function amountForFirstHalfYear(someArr) {
+				let result = 0;
+				for (let i = 0; i < 6; i++) {
+					result += someArr[i];
+				}
+				return result;
+			}
+			function amountForSecondHalfYear(someArr) {
+				let result = 0;
+				for (let i = 6; i < 12; i++) {
+					result += someArr[i];
+				}
+				return result;
+			}
+			function amountForSummerMonths(someArr) {
+				let result = 0;
+				for (let i = 5; i < 8; i++) {
+					result += someArr[i];
+				}
+				return result;
+			}
+			function amountForSecondQuarter(someArr) {
+				let result = 0;
+				for (let i = 3; i < 6; i++) {
+					result += someArr[i];
+				}
+				return result;
+			}
+			function amountForEvenMonths(someArr) {
+				let result = 0;
+				for (let i = 1; i < someArr.length; i+=2) {
+					result += someArr[i];
+				}
+				return result;
+			}
+			function amountForEverySeasonStartMonth(someArr) {
+				let result = 0;
+				for (let i = 2; i < someArr.length; i+=3) {
+					result += someArr[i];
+				}
+				return result;
+			}
+			const minAmount = 300;
+			const maxAmount = 800;
+			const months = 12;
+			const amountYear = randomFillFunc(minAmount, maxAmount, months);
+			const resultsArr = [amountForYear(amountYear), amountForFirstHalfYear(amountYear), amountForSecondHalfYear(amountYear),
+			amountForSummerMonths(amountYear), amountForSecondQuarter(amountYear), amountForEvenMonths(amountYear), amountForEverySeasonStartMonth(amountYear)]
             //Виводжу результат на сторінку
             document.write(`<div class="solution"><br><br>
 				Результат: <br><br>
-				${result}
+				З послідовності платіжок за рік: ${amountYear.join(' грн, ')} грн. <br>
+				Суми: <br>
+				1. за весь рік: ${resultsArr[0]}<br>
+				2. у першій половині року: ${resultsArr[1]}<br>
+				3. у другій половині року: ${resultsArr[2]}<br>
+				4. за літо: ${resultsArr[3]}<br>
+				5. за ІІ квартал: ${resultsArr[4]}<br>
+				6. за парні місяці (з парними номерами): ${resultsArr[5]}<br>
+				7. за місяці, які є початковими у сезоні (весна, літо, осінь, зима): ${resultsArr[6 ]}<br>
 			</div>`);
         </script>
     </body>

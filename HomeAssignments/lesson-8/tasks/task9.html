@@ -20,43 +20,13 @@
                             >
                         </div>
                         <p class="list-work__text list-work__text_mgb">
-							Дано покази температур (довільна кількість). 
-							Розробити функцію, яка дозволить підрахувати кількість від’ємних показів температури.
+							
                     </div>
                 </div>
             </main>
             <footer></footer>
         </div>
         <script>
-			function randomFillFunc(min, max, lengthArr) {  //Функція що виводить рандомне число від мін до макс 
-				let arr = [];
-				let rand = 0;
-				for (let i = 0; i < lengthArr; i++) {
-					rand = Math.floor(min+(Math.random()*(max-min+1)))
-					arr[i] = rand;
-				}
-				return arr;
-			}
-			function negativeTempCounter (arr) {
-				let negativeCounter = 0;
-				for (let i = 0; i < arr.length; i++) {
-					if (arr[i] < 0)  negativeCounter++;
-					
-				}
-				return negativeCounter;
-			}
-
-			const minTemp = -20;
-			const maxTemp = 30;
-			const numberOfTemp = 10;
-			const tempArr = randomFillFunc(minTemp, maxTemp, numberOfTemp);
-			const result = negativeTempCounter(tempArr);
-
-		document.write(`<div class="solution">
-			Результат:<br><br>
-			З масиву температур:  ${tempArr}<br><br>
-			${result} від'ємних.<br>
-		</div>`);
         </script>
     </body>
 </html>

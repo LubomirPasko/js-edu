@@ -13,12 +13,15 @@
             <main class="work">
                 <div class="work__block">
                     <div class="work__container">
-                        <h1 class="work__title">Задача 7</h1>
+                        <h1 class="work__title">Задача 8</h1>
                         <div class="work__back work__back_button">
                             <a class="work__link" href="../index.html">< BACK</a>
                         </div>
                         <p class="list-work__text list-work__text_mgb">
-							Створити функцію, яка випадковим чином виводить на екран одне із 4 зображень (шляхи до зображень передаються у функцію)
+							Дано одновимірний масив, у якому зберігається певна виграшна сума
+							(елементи заповнюються випадковим чином значеннями від -500 до 500). 
+							Надаючи користувачу можливість вибирати номери елементів  (поки він не відмовиться). 
+							Знаходити сумарний виграш.
 						</p>
                     </div>
                 </div>
@@ -26,33 +29,36 @@
             <footer></footer>
         </div>
         <script>
-			function randomImg (img1, img2, img3, img4) {
-				let imgRandNumber = Math.floor(1+(Math.random()*4));
-				let resImg;
-				switch (imgRandNumber) {
-					case 1:
-						resImg = img1;
-						break;
-					case 2:
-						resImg = img2;
-						break;
-					case 3:
-						resImg = img3;
-						break;
-					case 4:
-						resImg = img4;
-						break;
+			 //Функція що виводить рандомне число від мін до макс і пушить масив
+			function randomFillFunc(min, max, lengthArr) { 
+				let arr = [];
+				for (let i = 0; i < lengthArr; i++) {
+					let rand = Math.floor(min+(Math.random()*(max-min+1)))
+					arr.push(rand);
 				}
-				return resImg;
+				return arr;
 			}
-			const result = randomImg('../img/bat1.png', 
-			'../img/bat2.jpg', 
-			'../img/bat3.png', 
-			'../img/bat4.png')
-	
+			function winFunc(someArr) {
+				let winSum = 0;
+				let conf;
+				do {
+					let num = parseInt(prompt(`Введіть число від 1 до ${winningStreak.length} щоб виграти`, 4));
+					winSum += winningStreak[num-1];
+					conf = confirm(`Ви побачите виграш після завершення гри. Граємо далі?`);
+				} while (conf);
+				return winSum;
+			}
+			const minGain = -500;
+			const maxGain = 500;
+			const lengthOfArray = 15;
+			//Готовий масив чисел з виграшем
+			const winningStreak = randomFillFunc(minGain, maxGain, lengthOfArray);
+			
+			const result = winFunc(winningStreak);
             //Виводжу результат на сторінку
             document.write(`<div class="solution">
-				<img src=${result} alt="bat_image" style="max-width: 550px; display: block; margin: 0 auto;">
+				Послідовність: ${winningStreak}<br>
+				Виграш: ${result}
 			</div>`);
         </script>
     </body>
