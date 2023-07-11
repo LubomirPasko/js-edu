@@ -43,8 +43,13 @@
 				let conf;
 				let num;
 				do {
+<<<<<<< HEAD
 					num = parseInt(prompt(`Введіть число від 1 до ${someArr.length} щоб виграти`, 4));
 					winSum += someArr[num-1];
+=======
+					num = parseInt(prompt(`Введіть число від 1 до ${winningStreak.length} щоб виграти`, 4));
+					winSum += winningStreak[num-1];
+>>>>>>> d23f440c52442587624f6b3578ddd99f3fe9d323
 					conf = confirm(`Ви побачите виграш після завершення гри. Граємо далі?`);
 				} while (conf);
 				return winSum;
