@@ -35,7 +35,7 @@
             <footer></footer>
         </div>
         <script>
-			function randomFillFunc(min, max, lengthArr) {  //Функція що виводить рандомне число від мін до макс 
+			function randomFillFunc(min, max, lengthArr) {
 				let arr = [];
 				for (let i = 0; i < lengthArr; i++) {
 					let rand = Math.floor(min+(Math.random()*(max-min+1)))
@@ -43,51 +43,9 @@
 				}
 				return arr;
 			}
-			function amountForYear(someArr) {
+			function paymentCalculation(start, end, step, someArr) {
 				let result = 0;
-				for (let i = 0; i < someArr.length; i++) {
-					result += someArr[i];
-				}
-				return result;
-			}
-			function amountForFirstHalfYear(someArr) {
-				let result = 0;
-				for (let i = 0; i < 6; i++) {
-					result += someArr[i];
-				}
-				return result;
-			}
-			function amountForSecondHalfYear(someArr) {
-				let result = 0;
-				for (let i = 6; i < 12; i++) {
-					result += someArr[i];
-				}
-				return result;
-			}
-			function amountForSummerMonths(someArr) {
-				let result = 0;
-				for (let i = 5; i < 8; i++) {
-					result += someArr[i];
-				}
-				return result;
-			}
-			function amountForSecondQuarter(someArr) {
-				let result = 0;
-				for (let i = 3; i < 6; i++) {
-					result += someArr[i];
-				}
-				return result;
-			}
-			function amountForEvenMonths(someArr) {
-				let result = 0;
-				for (let i = 1; i < someArr.length; i+=2) {
-					result += someArr[i];
-				}
-				return result;
-			}
-			function amountForEverySeasonStartMonth(someArr) {
-				let result = 0;
-				for (let i = 2; i < someArr.length; i+=3) {
+				for (let i = start; i < end; i+=step) {
 					result += someArr[i];
 				}
 				return result;
@@ -96,21 +54,23 @@
 			const maxAmount = 800;
 			const months = 12;
 			const amountYear = randomFillFunc(minAmount, maxAmount, months);
-			const resultsArr = [amountForYear(amountYear), amountForFirstHalfYear(amountYear), amountForSecondHalfYear(amountYear),
-			amountForSummerMonths(amountYear), amountForSecondQuarter(amountYear), amountForEvenMonths(amountYear), amountForEverySeasonStartMonth(amountYear)]
+			const resultsArr = [paymentCalculation(0, 12, 1, amountYear), paymentCalculation(0, 6, 1, amountYear), paymentCalculation(6, 12, 1, amountYear),
+			paymentCalculation(5, 8, 1, amountYear), paymentCalculation(3, 6, 1, amountYear), paymentCalculation(1, 12, 2, amountYear), paymentCalculation(1, 12,3, amountYear)];
             //Виводжу результат на сторінку
             document.write(`<div class="solution"><br><br>
 				Результат: <br><br>
 				З послідовності платіжок за рік: ${amountYear.join(' грн, ')} грн. <br>
 				Суми: <br>
-				1. за весь рік: ${resultsArr[0]}<br>
-				2. у першій половині року: ${resultsArr[1]}<br>
-				3. у другій половині року: ${resultsArr[2]}<br>
-				4. за літо: ${resultsArr[3]}<br>
-				5. за ІІ квартал: ${resultsArr[4]}<br>
-				6. за парні місяці (з парними номерами): ${resultsArr[5]}<br>
-				7. за місяці, які є початковими у сезоні (весна, літо, осінь, зима): ${resultsArr[6 ]}<br>
+				1. за весь рік: ${resultsArr[0]} грн<br>
+				2. у першій половині року: ${resultsArr[1]} грн<br>
+				3. у другій половині року: ${resultsArr[2]} грн<br>
+				4. за літо: ${resultsArr[3]} грн<br>
+				5. за ІІ квартал: ${resultsArr[4]} грн<br>
+				6. за парні місяці (з парними номерами): ${resultsArr[5]} грн<br>
+				7. за місяці, які є початковими у сезоні (весна, літо, осінь, зима): ${resultsArr[6]} грн<br>
 			</div>`);
         </script>
     </body>
 </html>
+
+
