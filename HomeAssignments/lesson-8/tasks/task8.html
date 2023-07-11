@@ -41,8 +41,9 @@
 			function winFunc(someArr) {
 				let winSum = 0;
 				let conf;
+				let num;
 				do {
-					let num = parseInt(prompt(`Введіть число від 1 до ${winningStreak.length} щоб виграти`, 4));
+					num = parseInt(prompt(`Введіть число від 1 до ${winningStreak.length} щоб виграти`, 4));
 					winSum += winningStreak[num-1];
 					conf = confirm(`Ви побачите виграш після завершення гри. Граємо далі?`);
 				} while (conf);
