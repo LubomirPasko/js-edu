@@ -18,8 +18,7 @@
 						<a class="work__link" href="../index.html">< BACK</a>
 					</div>
 					<p class="list-work__text list-work__text_mgb">
-						Дано послідовність цін товарів та назв (у окремих масивах).
-						Вивести на екран ті, які може собі дозволити користувач (кількість грошей задається).
+						Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2
 					</p>
                 </div>
             </div>
@@ -27,29 +26,11 @@
         <footer></footer>
     </div>
 	<script>
-		function youCanBuy (money, someArr) {
-			let result = [];
-			let min = someArr[0][0];
-				for (let j = 0; j < someArr.length; j++) { //Спочатку знаходжу мінімальне значення
-					if (someArr[j][0] < min) min = someArr[j][0]; 
-				}
-			for (let i = 0; i < someArr.length; i++) {
-				if (money >= someArr[i][0]) result.push(someArr[i][1]);
-				if (money < min) { //Порівнюю для виводу Нічого
-					result[0] = 'Нічого. Пора на роботку';
-					break;
-				}
-			}
-			return result;
-		}
-
-		const amountOfMoney =parseInt(prompt("Скільки в Вас є грошей", 40));
-		const pricesAndNameOfProduct = [[20, 'Каву в Кулінічах'], [3, 'Проїхатись на метро'],  [40, 'Штани'], [54, 'Літр палива, щоб лампочка не горіла:)'], [80, 'Біг-Мак']]
-		const result = youCanBuy(amountOfMoney, pricesAndNameOfProduct);
+		
 		//Виводжу результат на сторінку
 		document.write(`<div class="solution"> 
 			Результат виконання:<br><br>
-			Маючи ${amountOfMoney} грн. в кишені, можете собі дозволити: ${result.join(', ')}.
+			
 			</div>`);
 	</script>
 </body>

@@ -18,12 +18,7 @@
 						<a class="work__link" href="../index.html">< BACK</a>
 					</div>
 					<p class="list-work__text list-work__text_mgb">
-						Дано послідовність оцінок учня. Підрахувати кількість:
-						<ul>
-							<li>1. двійок;</li>
-							<li>2. кількість хороших оцінок (добре, відмінно);</li>
-							<li>3. кількість оцінок, які нижче середнього.</li>
-						</ul>
+						Дано масив елементів. Знайти добуток додатних елементів
 					</p>
                 </div>
             </div>
@@ -31,42 +26,11 @@
         <footer></footer>
     </div>
 	<script>
-		function randomFillFunc(min, max, lengthArr) {  //Функція що виводить рандомне число від мін до макс 
-			let arr = [];
-			for (let i = 0; i < lengthArr; i++) {
-				let rand = Math.floor(min+(Math.random()*(max-min+1)))
-				arr.push(rand);
-			}
-			return arr;
-		}
-		function gradesCounter (someArr) {
-			let result = [];
-			let grade2 = 0;
-			let grade23 = 0;
-			let grade45 = 0;
-			for (let i = 0; i < someArr.length; i++) {
-				if (someArr[i] === 2) grade2++;
-				if (someArr[i] === 2 || someArr[i] === 3) grade23++;
-				if (someArr[i] === 5 || someArr[i] === 4) grade45++;
-			}
-			return result = [grade2, grade23, grade45];
-		}
-
-
-
-
-		const minGrade = 2;
-		const maxGrade = 5;
-		const numberOfGrades = 10;
-		const gradesArr = randomFillFunc(minGrade, maxGrade, numberOfGrades);
-		const result = gradesCounter(gradesArr);
+		
 
 		//Виводжу результат на сторінку
 		document.write(`<div class="solution">
-			З ряду оцінок: ${gradesArr}<br><br>
-			З них:<br> Двійок - ${result[0]} шт<br>
-			Оцінок нижче серенього (2 і 3) - ${result[1]} шт<br>
-			Гарних оцінок (4 і 5) - ${result[2]} шт
+			
 			</div>`);
 	/* 		function moreZero (myArray) {
 				let res = 0;
