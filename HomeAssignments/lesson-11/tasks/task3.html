@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../css/work-style.css">
-    <title>Task 4</title>
+    <title>Task 3</title>
 </head>
 <body>
     <div class="wrapper">
@@ -13,16 +13,12 @@
         <main class="work">
             <div class="work__block">
                 <div class="work__container">
-					<h1 class="work__title">Задача 4</h1>
+					<h1 class="work__title">Задача 3</h1>
 					<div class="work__back work__back_button">
 						<a class="work__link" href="../index.html">< BACK</a>
 					</div>
 					<p class="list-work__text list-work__text_mgb">
-						Створити окремі функції, які для 4 чисел знаходять:<br>
-						1)суму;<br>
-						2)добуток;<br>
-						3)середнє арифметичне;<br>
-						4)мінімальне значення. 
+						Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван».
 					</p>
                 </div>
             </div>
@@ -30,9 +26,20 @@
         <footer></footer>
     </div>
 	<script>
+		function nameFinderAndCounter (name, someArr) {
+			let counter = 0;
+			for (let i = 0; i < someArr.length; i++) {
+				if (someArr[i] === name) counter++;
+			}
+			return counter;
+		}
+		const nameForFinding = "Іван";
+		const namesArray = ['Олег', 'Анастасія', 'Ігор', 'Ростислав', 'Іван', 'Сергій', 'Іван', 'Іван'];
+		const result = nameFinderAndCounter(nameForFinding, namesArray);
 		document.write(`<div class="solution">
 			Результат виконання:<br><br>
-
+			Серед списку імен: ${namesArray.join(', ')},<br><br>
+			ім'я ${nameForFinding} зустрічається ${result} рази(ів).
 			</div>`);
 	</script>
 </body>

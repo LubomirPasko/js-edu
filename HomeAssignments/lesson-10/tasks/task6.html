@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/work-style.css">
+    <title>Task 6</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header></header>
+        <main class="work">
+            <div class="work__block">
+                <div class="work__container">
+					<h1 class="work__title">Задача 6</h1>
+					<div class="work__back work__back_button">
+						<a class="work__link" href="../index.html">< BACK</a>
+					</div>
+					<p class="list-work__text list-work__text_mgb">
+						Дано послідовність цін товарів та назв (у окремих масивах).
+						Вивести на екран ті, які може собі дозволити користувач (кількість грошей задається).
+					</p>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+    </div>
+	<script>
+		function youCanBuy (money, someArr) {
+			let result = [];
+			let min = someArr[0][0];
+				for (let j = 0; j < someArr.length; j++) { //Спочатку знаходжу мінімальне значення
+					if (someArr[j][0] < min) min = someArr[j][0]; 
+				}
+			for (let i = 0; i < someArr.length; i++) {
+				if (money >= someArr[i][0]) result.push(someArr[i][1]);
+				if (money < min) { //Порівнюю для виводу Нічого
+					result[0] = 'Нічого. Пора на роботку';
+					break;
+				}
+			}
+			return result;
+		}
+
+		const amountOfMoney =parseInt(prompt("Скільки в Вас є грошей", 40));
+		const pricesAndNameOfProduct = [[20, 'Каву в Кулінічах'], [3, 'Проїхатись на метро'],  [40, 'Штани'], [54, 'Літр палива, щоб лампочка не горіла:)'], [80, 'Біг-Мак']]
+		const result = youCanBuy(amountOfMoney, pricesAndNameOfProduct);
+		//Виводжу результат на сторінку
+		document.write(`<div class="solution"> 
+			Результат виконання:<br><br>
+			Маючи ${amountOfMoney} грн. в кишені, можете собі дозволити: ${result.join(', ')}.
+			</div>`);
+	</script>
+</body>
+</html>
