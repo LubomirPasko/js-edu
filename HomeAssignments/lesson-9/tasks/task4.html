@@ -26,10 +26,37 @@
         <footer></footer>
     </div>
 	<script>
+		function randomFillFunc(min, max, lengthArr) {  //поки без forEach (далі буде)  Функція що наповнює масив рандомними числами в указаному діапазоні
+			let arr = [];
+			for (let i = 0; i < lengthArr; i++) {
+				let rand = Math.floor(min+(Math.random()*(max-min+1)))
+				arr.push(rand);
+			}
+			return arr;
+		}
+		// Так:
+		/* function moreThan100 (someArr) {
+			for(const elem of someArr) {
+				if (elem > 100) document.write(`<span class="solution">${elem}</span>`);
+			}
+		} */
+		//Або так (потім зручніше використовувати):
+		function moreThan100 (someArr) {
+			let res = []
+			for(const elem of someArr) {
+				if (elem > 100) res.push(elem);
+			}
+			return res
+		}
+
+		const arr = randomFillFunc(10, 150, 15); // Не створюю змінні для цих значеннь.
+		
 		document.write(`<div class="solution">
 			Результат виконання:<br><br>
-
+			Початковий масив:${arr.join(', ')}<br><br>
+			Елементи, що більші за 100: ${moreThan100(arr).join(', ')}
 			</div>`);
+			//moreThan100(arr); це вивід першого варіанту (розкоментувати разом з першою функцією.)
 	</script>
 </body>
 </html>

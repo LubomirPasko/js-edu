@@ -26,29 +26,31 @@
         <footer></footer>
     </div>
 	<script>
-		
+		function randomFillFunc(min, max, lengthArr) {  //поки без forEach (далі буде)  Функція що наповнює масив рандомними числами в указаному діапазоні
+			let arr = [];
+			for (let i = 0; i < lengthArr; i++) {
+				let rand = Math.floor(min+(Math.random()*(max-min+1)))
+				arr.push(rand);
+			}
+			return arr;
+		}
+		function multiplyPositiveElem(someArr) {
+			let result = 1;
+			for (const element of someArr) {
+				if (element > 0) {
+					result *= element;
+				}
+			}
+			return result
+		}
+
+		const arr = randomFillFunc(-5, 10, 5); // Не створюю змінні для цих значеннь.
 
 		//Виводжу результат на сторінку
 		document.write(`<div class="solution">
-			
+			Масив: ${arr}<br>
+			Добуток позитивних елементів: ${multiplyPositiveElem(arr)}
 			</div>`);
-	/* 		function moreZero (myArray) {
-				let res = 0;
-				for (let i = 0; i < myArray.length; i++) {
-					if (myArray[i] > 0) res++
-				}
-				return res;
-			}
-
-			let arr = [1, -1, -2, 3]
-
-			let result = moreZero(arr)
-
-			document.write(result) */
-
-
-
-
 	</script>
 </body>
 </html>

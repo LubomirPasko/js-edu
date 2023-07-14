@@ -29,11 +29,18 @@
             <footer></footer>
         </div>
         <script>
-		
-		//Виводжу результат на сторінку
-		document.write(`<div class="solution">
-			Результат виконання:<br><br>
-			</div>`);
+			//
+			const arrayLength = parseInt(prompt('Enter the length of the array (an even number is better:) )', 8))
+			const arr = new Array(arrayLength)
+			const arrMiddle = Math.ceil(arr.length / 2);
+			const numForFill1 = 1;
+			const numForFill2 = 7;
+			arr.fill(numForFill1, 0, arrMiddle).fill(numForFill2, arrMiddle);
+			//Виводжу результат на сторінку
+			document.write(`<div class="solution">
+				Результат виконання:<br><br>
+				${arr}
+				</div>`);
         </script>
     </body>
 </html>

@@ -26,10 +26,22 @@
         <footer></footer>
     </div>
 	<script>
-		
+		//Який варіант кращий? Чи треба створювати функцію заради таких елементарних виразів?
+		/* const arrLength = parseInt(prompt('Enter the length of the array', 8))
+		const zeroFillFunc = (arrayLength) => new Array(arrayLength).fill(0);
+
+		document.write(`<div class="solution">
+			Результат виконання:<br><br>
+			${zeroFillFunc(arrLength)}
+			</div>`); */
+		//Чи цей?
+		const arrLength = parseInt(prompt('Enter the length of the array', 8))
+		const arrZero = new Array(arrLength).fill(0);
+
 		//Виводжу результат на сторінку
 		document.write(`<div class="solution">
 			Результат виконання:<br><br>
+			${arrZero}
 			</div>`);
 	</script>
 </body>

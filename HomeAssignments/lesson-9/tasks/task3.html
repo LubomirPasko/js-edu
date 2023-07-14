@@ -28,9 +28,13 @@
         <footer></footer>
     </div>
 	<script>
+		const arrayLength = parseInt(prompt('Enter the length of the array.', 8))
+		let arr = new Array(arrayLength).fill(1, 0, 5).fill(7, 5);
+		
+		//Виводжу результат на сторінку
 		document.write(`<div class="solution">
 			Результат виконання:<br><br>
-			
+			${arr}
 			</div>`);
 	</script>
 </body>
