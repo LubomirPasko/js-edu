@@ -26,11 +26,28 @@
         <footer></footer>
     </div>
 	<script>
-		
+		function randomFillFunc(min, max, lengthArr) {  //поки без forEach (далі буде)  Функція що наповнює масив рандомними числами в указаному діапазоні
+			let arr = [];
+			for (let i = 0; i < lengthArr; i++) {
+				let rand = Math.floor(min+(Math.random()*(max-min+1)))
+				arr.push(rand);
+			}
+			return arr;
+		}
+		function getMultiplyMoreThanFirst(someArr) {
+			let res = [someArr[0]];
+			for (let i = 0; i < someArr.length; i++) {
+				someArr[0] < someArr[i+1] ? res.push(someArr[i+1]*2) : res.push(someArr[i+1]);
+			}
+			return res;
+		}
+		const arr = randomFillFunc(0, 10, 10);
+		const result = getMultiplyMoreThanFirst(arr);
 		//Виводжу результат на сторінку
 		document.write(`<div class="solution"> 
 			Результат виконання:<br><br>
-			
+			${arr}<br>
+			${result}
 			</div>`);
 	</script>
 </body>
