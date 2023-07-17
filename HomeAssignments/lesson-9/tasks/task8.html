@@ -26,7 +26,28 @@
             <footer></footer>
         </div>
         <script>
-			
+			const numbersArr = ['АХ2231АЕ', 'АХ7147МН', 'ВІ7037', 'АХ8178МН', 'АІ1234НО', 'СА3465МА'];
+
+			/* function numberOfCar (someArr) {
+				let res = [];
+				for (const elem of someArr) {
+					if (elem[0] === 'А') res.push(elem);
+				}
+				return res;
+			} */
+			function numberOfCar (someArr) {
+				let res = [];
+				someArr.forEach ((elem) => {
+					if (elem[0] === 'А') res.push(elem);
+				})
+				return res;
+			}
+            //Виводжу результат на сторінку
+            document.write(`<div class="solution"><br><br>
+				Результат: <br><br>
+				Всі номери: ${numbersArr.join(', ')}<br>
+				Всі, які починаються на "А": ${numberOfCar(numbersArr).join(', ')}
+			</div>`);
 		
             //Виводжу результат на сторінку
             document.write(`<div class="solution">

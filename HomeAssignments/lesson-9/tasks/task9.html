@@ -21,16 +21,26 @@
                         </div>
                         <p class="list-work__text list-work__text_mgb">
 							Дано масив імен. Сформувати масив з перших літер цих імен.
+
+
                     </div>
                 </div>
             </main>
             <footer></footer>
         </div>
         <script>
-
+			const namesArr = ['Борис', 'Едуард', 'Тарас', 'Микола', 'Епіфаній', 'Назар'];
+			function firstLetter (someArr) {
+				let res = [];
+				someArr.forEach ((elem, index, arr) => {
+					res.push(elem[0]);
+				})
+				return res;
+			}
 			 //Виводжу результат на сторінку
 			document.write(`<div class="solution">
-				
+				Результат виконання6 <br><br>
+				${firstLetter(namesArr).join('')}
 			</div>`);
         </script>
     </body>

@@ -28,10 +28,25 @@
         </div>
         <script>
 
+		function randomFillFunc(min, max, lengthArr) {  //поки без forEach (далі буде)  Функція що наповнює масив рандомними числами в указаному діапазоні
+			let arr = [];
+			for (let i = 0; i < lengthArr; i++) {
+				let rand = Math.floor(min+(Math.random()*(max-min+1)))
+				arr.push(rand);
+			}
+			return arr;
+		}
+		const pricesArr = randomFillFunc(600, 2000, 7)
+			const oldPrices = [...pricesArr];
+
+			pricesArr.forEach((el, ind, arr) => {
+				if (el > 1000) arr[ind] = Math.round((el*0.7)*100)/100;
+			} )
             //Виводжу результат на сторінку
             document.write(`<div class="solution"><br><br>
 				Результат: <br><br>
-				
+				Старі ціни: ${oldPrices.join('грн, ')} грн.<br>
+				Нові ціни: ${pricesArr.join(' грн, ')} грн.
 			</div>`);
         </script>
     </body>
