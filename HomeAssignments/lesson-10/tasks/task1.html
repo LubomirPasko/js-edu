@@ -42,9 +42,51 @@
         <footer></footer>
     </div>
 	<script>
+	/* 	function randomFillFunc(min, max, lengthArr) {
+			let arr = [];
+			for (let i = 0; i < lengthArr; i++) {
+				let rand = Math.floor(min+(Math.random()*(max-min+1)))
+				arr.push(rand);
+			}
+			return arr;
+		} */
+		//Або?
+		/* function randomFillFunc(min, max, lengthArr) {
+			let arr = new Array(lengthArr);
+			arr.fill(0)
+			arr.forEach((el, ind, baseArr) => baseArr[ind] = Math.floor(min+(Math.random()*(max-min+1))))
+			return arr;
+		} */
+		const mainArray = [583,2111,879,715,1495,1429,832,913,1390,1800]; /* randomFillFunc(500, 2000, 10); */
+
+		//1)Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн.
+		const res1 = mainArray.filter((el) => el > 1000);
+		//2)Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.
+		const res2 = mainArray.reduce((prevValue, el, ind, baseArr) => {
+				if (el > 1000) {
+					prevValue.push(ind);
+				}
+				return prevValue;
+			}, []
+		)
+		//3)Сформувати список з тих цін, які більші за попереднє значення
+		const res3 = mainArray.filter((el, ind, baseArr) => el > baseArr[ind-1]);
+		//4)Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального
+		/* const maxValue = Math.max(...mainArray); */
+		//або
+		const maxValue = mainArray.reduce((prevValue, el) => el > prevValue ? el : prevValue);
+		const res4 = mainArray.map((el, i, baseArr) => Math.round(el/maxValue*100*100)/100);
+		//5)Підрахувати кількість змін цін.
+		const res5 = mainArray.reduce((change, el, i, baseArr) => ((el !== baseArr[i -1] ) ? change+1 : change), 0) 
 		//Виводжу результат на сторінку
 		document.write(`<div class="solution">
 			Результат виконання:<br><br>
+			Початковий масив: ${mainArray}<br><br>
+			1. Масив зі значеннями більше 1000: ${res1}<br>
+			2. Номери елементів, що більші за 1000:  ${res2}<br>
+			3. Список цін в базовому масиві, що більші за попереднє значення: ${res3}<br>
+			4. Значення цін у % відносно ціни ${maxValue} грн: ${res4.join('%, ')}%.<br>
+			5. Скільки разів змінювалась ціна: ${res5}<br>
 			</div>`);
 	</script>
 </body>
