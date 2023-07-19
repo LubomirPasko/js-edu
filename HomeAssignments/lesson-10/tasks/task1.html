@@ -77,7 +77,8 @@
 		const maxValue = mainArray.reduce((prevValue, el) => el > prevValue ? el : prevValue);
 		const res4 = mainArray.map((el, i, baseArr) => Math.round(el/maxValue*100*100)/100);
 		//5)Підрахувати кількість змін цін.
-		const res5 = mainArray.reduce((change, el, i, baseArr) => ((el !== baseArr[i -1] ) ? change+1 : change), 0) 
+		//Першу ціну не можна вважати як зміну ціни, тому додав умову, що i !== 0
+		const res5 = mainArray.reduce((change, el, i, baseArr) => ((el !== baseArr[i -1] && i !== 0) ? change+1 : change), 0) 
 		//Виводжу результат на сторінку
 		document.write(`<div class="solution">
 			Результат виконання:<br><br>
