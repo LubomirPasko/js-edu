@@ -18,68 +18,33 @@
 						<a class="work__link" href="../index.html">< BACK</a>
 					</div>
 					<p class="list-work__text list-work__text_mgb">
-						Дано масив, який містить оцінки з К предметів. Знайти середній бал і з’ясувати до якої категорії він відноситься
-						(відмінник, двійочник (має хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча би одна трійка)).
+						При розв’язанні задач намагайтесь використовувати відповідні методи (map, filter, reduce,…) всюди, де це можливо
+						Задача. Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)<br><br>
+						<ul>
+							<li>1)Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн.</li>
+							<li>2)Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.</li>
+							<li>3)Сформувати список з тих цін, які більші за попереднє значення</li>
+							<li>4)Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального</li>
+							<li>5)Підрахувати кількість змін цін</li>
+							<li>6)Визначити, чи є ціна, що менше 1000</li>
+							<li>7)Визначати, чи усі ціни більше за 1000</li>
+							<li>8)Підрахувати кількість цін, що більше за 1000</li>
+							<li>9)Підрахувати суму цін, що більше за 1000</li>
+							<li>10)Знайти першу ціну, що більше за 1000</li>
+							<li>11)Знайти індекс першої ціни, що більше за 1000</li>
+							<li>12)Знайти останню ціну, що більше за 1000</li>
+							<li>13)Знайти індекс останньої ціни, що більше за 1000</li>
+						</ul>
+					</p>
                 </div>
             </div>
         </main>
         <footer></footer>
     </div>
 	<script>
-		// В умові вказано знайти сеедній бал і до якої категорії він відноситься, але далі вказано, що категорія залежить хоча б 
-		// від однієї оцінки, а це вже інше рішення.
-		function randomFillFunc(min, max, lengthArr) {  //Функція що наповнює масив рандомними числами в указаному діапазоні
-				let arr = [];
-				for (let i = 0; i < lengthArr; i++) {
-					let rand = Math.floor(min+(Math.random()*(max-min+1)))
-					arr.push(rand);
-				}
-				return arr;
-			}
-		//Середній бал
-		function averageGrade (someArr) {
-			let sumOfGrades = 0;
-			for (let i = 0; i < someArr.length; i++) {
-				sumOfGrades += someArr[i];
-			}
-			return sumOfGrades / someArr.length;
-		}
-		//Мінімалтьна оцінка для розрахунку категорій 
-		function minGradeOfAll (someArr) {
-			return Math.min(...someArr);   //Важливо тут мати рест оператор
-		}
-		//Категорія учня
-		function categoryGrades (grade) {
-			let res = '';
-			switch (grade) {
-				case 2:
-					res = 'двієчник';
-					break;
-				case 3:
-					res = 'трієчник';
-					break
-				case 4:
-					res = 'має добрі оцінки';
-					break
-				case 5:
-					res = 'відмінник'
-					break
-			}
-			return res;
-		}
-		const minGrade = 2;
-		const maxGrade = 5;
-		const numberOfSubjects = 10;
-
-		const arrGrades = randomFillFunc(minGrade, maxGrade, numberOfSubjects); //масив наповнений оцінками від 2 до 5
-		const result = averageGrade(arrGrades);
-		const gradesCategory = categoryGrades(minGradeOfAll(arrGrades));
 		//Виводжу результат на сторінку
 		document.write(`<div class="solution">
 			Результат виконання:<br><br>
-			Оцінки Вашого учня: ${arrGrades};<br>
-			Середній бал Вашого учня: ${result.toFixed(1)};<br>
-			Якщо рахувати по найменшій оцінці, то Ваш учень - ${gradesCategory}.
 			</div>`);
 	</script>
 </body>
