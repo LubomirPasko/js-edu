@@ -42,14 +42,13 @@
         <footer></footer>
     </div>
 	<script>
-	/* 	function randomFillFunc(min, max, lengthArr) {
+		function randomFillFunc(min, max, lengthArr) {
 			let arr = [];
 			for (let i = 0; i < lengthArr; i++) {
-				let rand = Math.floor(min+(Math.random()*(max-min+1)))
-				arr.push(rand);
+				arr.push(Math.floor(min+(Math.random()*(max-min+1))));
 			}
 			return arr;
-		} */
+		}
 		//Або?
 		/* function randomFillFunc(min, max, lengthArr) {
 			let arr = new Array(lengthArr);
@@ -57,7 +56,7 @@
 			arr.forEach((el, ind, baseArr) => baseArr[ind] = Math.floor(min+(Math.random()*(max-min+1))))
 			return arr;
 		} */
-		const mainArray = [583,2111,879,715,1495,1429,832,913,1390,1800]; /* randomFillFunc(500, 2000, 10); */
+		const mainArray = randomFillFunc(500, 2000, 10);
 
 		//1)Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн.
 		const res1 = mainArray.filter((el) => el > 1000);
@@ -68,18 +67,37 @@
 				}
 				return prevValue;
 			}, []
-		)
-		//3)Сформувати список з тих цін, які більші за попереднє значення
-		const res3 = mainArray.filter((el, ind, baseArr) => el > baseArr[ind-1]);
-		//4)Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального
+			)
+		//3.Сформувати список з тих цін, які більші за попереднє значення
+		const res3 = mainArray.filter((el, i, baseArr) => el > baseArr[i-1]);
+		//4.Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального
 		/* const maxValue = Math.max(...mainArray); */
-		//або
+		//або?
 		const maxValue = mainArray.reduce((prevValue, el) => el > prevValue ? el : prevValue);
-		const res4 = mainArray.map((el, i, baseArr) => Math.round(el/maxValue*100*100)/100);
-		//5)Підрахувати кількість змін цін.
+		const res4 = mainArray.map((el) => Math.round(el/maxValue*100*100)/100);
+		//5.Підрахувати кількість змін цін.
 		//Першу ціну не можна вважати як зміну ціни, тому додав умову, що i !== 0
 		const res5 = mainArray.reduce((change, el, i, baseArr) => ((el !== baseArr[i -1] && i !== 0) ? change+1 : change), 0) 
-		//Виводжу результат на сторінку
+		//6.Визначити, чи є ціна, що менше 1000
+		const priceValue = 1000;
+		const elLessThan = mainArray.some((el) => el < priceValue);
+		const printRes6 = (value) => value ? `є ціна менша за ${priceValue}` : `немає ціни меншої за ${priceValue}`;
+		//7.Визначати, чи усі ціни більше за 1000
+		const elMoreThan = mainArray.every((el) => el > priceValue);
+		const printRes7 = (value) => value ? `всі елементи більші за ${priceValue}` : `не всі елементи більші за ${priceValue}`;
+		//8.Підрахувати кількість цін, що більше за 1000
+		const res8 = mainArray.reduce((prevValue, el) => (el > 1000 ? prevValue+1 : prevValue), 0);
+		//9.Підрахувати суму цін, що більше за 1000
+		const res9 = mainArray.reduce((prevValue, el, i, baseArr) => (el > 1000 ? prevValue + el : prevValue), 0);
+		//10.Знайти першу ціну, що більше за 1000
+		const res10 = mainArray.find((el) => el > 1000);
+		//11.Знайти індекс першої ціни, що більше за 1000
+		const res11 = mainArray.findIndex((el) => el > 1000);
+		//12.Знайти останню ціну, що більше за 1000
+		const res12 = mainArray.findLast((el) => el > 1000);
+		//13.Знайти індекс останньої ціни, що більше за 1000
+		const res13 = mainArray.findLastIndex((el) => el > 1000);
+		
 		document.write(`<div class="solution">
 			Результат виконання:<br><br>
 			Початковий масив: ${mainArray}<br><br>
@@ -88,6 +106,14 @@
 			3. Список цін в базовому масиві, що більші за попереднє значення: ${res3}<br>
 			4. Значення цін у % відносно ціни ${maxValue} грн: ${res4.join('%, ')}%.<br>
 			5. Скільки разів змінювалась ціна: ${res5}<br>
+			6. У масиві цін ${printRes6(elLessThan)}.<br>
+			7. В даному масиві ${printRes7(elMoreThan)}.<br>
+			8. В даному масиві ${res8} цін(и) більші за 1000.<br>
+			9. Cума всіх елементів масиву, що більші ніж 1000: ${res9}.<br>
+			10. Перший елемент, що більший за 1000: ${res10}.<br>
+			11. Індекс першої ціни в масиві, що більша за 1000: ${res11}.<br>
+			12. Остання ціна, що більша за 1000: ${res12}.<br>
+			13. Індекс останньої ціни в масиві, що більша за 1000: ${res13}.
 			</div>`);
 	</script>
 </body>
