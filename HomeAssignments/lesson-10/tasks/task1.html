@@ -56,8 +56,8 @@
 			arr.forEach((el, ind, baseArr) => baseArr[ind] = Math.floor(min+(Math.random()*(max-min+1))))
 			return arr;
 		} */
+		//Генерую не від 1 до 10000, щоб наглядніше було видно роботу методів.
 		const mainArray = randomFillFunc(500, 2000, 10);
-
 		//1)Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн.
 		const res1 = mainArray.filter((el) => el > 1000);
 		//2)Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.
@@ -79,12 +79,13 @@
 		//Першу ціну не можна вважати як зміну ціни, тому додав умову, що i !== 0
 		const res5 = mainArray.reduce((change, el, i, baseArr) => ((el !== baseArr[i -1] && i !== 0) ? change+1 : change), 0) 
 		//6.Визначити, чи є ціна, що менше 1000
-		const priceValue = 1000;
+		const priceValue = 1000; //Ніби не можна(не бажано) передаватизмінну у функцію. Яка ваша порада? Як краще? Питав у чаті - тиша.
+		//Ця змінна не обробляється, а служить для виводу інформації.
 		const elLessThan = mainArray.some((el) => el < priceValue);
-		const printRes6 = (value) => value ? `є ціна менша за ${priceValue}` : `немає ціни меншої за ${priceValue}`;
+		const printRes6 = (value, printNumber) => value ? `є ціна менша за ${printNumber}` : `немає ціни меншої за ${printNumber}`;
 		//7.Визначати, чи усі ціни більше за 1000
 		const elMoreThan = mainArray.every((el) => el > priceValue);
-		const printRes7 = (value) => value ? `всі елементи більші за ${priceValue}` : `не всі елементи більші за ${priceValue}`;
+		const printRes7 = (value, printNumber) => value ? `всі елементи більші за ${printNumber}` : `не всі елементи більші за ${printNumber}`;
 		//8.Підрахувати кількість цін, що більше за 1000
 		const res8 = mainArray.reduce((prevValue, el) => (el > 1000 ? prevValue+1 : prevValue), 0);
 		//9.Підрахувати суму цін, що більше за 1000
@@ -106,8 +107,8 @@
 			3. Список цін в базовому масиві, що більші за попереднє значення: ${res3}<br>
 			4. Значення цін у % відносно ціни ${maxValue} грн: ${res4.join('%, ')}%.<br>
 			5. Скільки разів змінювалась ціна: ${res5}<br>
-			6. У масиві цін ${printRes6(elLessThan)}.<br>
-			7. В даному масиві ${printRes7(elMoreThan)}.<br>
+			6. У масиві цін ${printRes6(elLessThan, 1000)}.<br>
+			7. В даному масиві ${printRes7(elMoreThan, 1000)}.<br>
 			8. В даному масиві ${res8} цін(и) більші за 1000.<br>
 			9. Cума всіх елементів масиву, що більші ніж 1000: ${res9}.<br>
 			10. Перший елемент, що більший за 1000: ${res10}.<br>
