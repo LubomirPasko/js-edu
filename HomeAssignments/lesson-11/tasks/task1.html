@@ -62,8 +62,7 @@ const arr =
 [403, 471, 925, 127, 928, 597, 582],  //3
 [455, 109, 195, 905, 164, 591, 325]]; //4
 
-const testArr = 
-[181,596, 951, 459, 381, 789, 822];
+const testArr = [181,596, 951, 459, 381, 789, 822];
 		//1.загальний прибуток кожного магазину за тиждень;
 		//треба порахувати результат одного масиву через reduce
 		// Поверх нього цикл що = кільк магазинів 
@@ -118,19 +117,25 @@ const testArr =
 			return Math.max(...income)
 		}
 		//6. Cформувати загальний список (одновимірний масив) зі значенням, що більші за 200
-		function moreThanNumber (num, someArr) {
-			return someArr.flat(Infinity).filter(el => el > num)
-		}
+		const moreThanNumber = (num, someArr) => someArr.flat(Infinity).filter(el => el > num);
 		//7. Відсортувати кожен тиждень за зростанням
 		function sortArrFunc (someArr) {
+			const arrFunc = JSON.parse(JSON.stringify(someArr));
 			let res = [];
-			for (let i = 0; i < someArr.length; i++) {
-				res.push(someArr[i].sort((a,b) => a - b))
+			for (let i = 0; i < arrFunc.length; i++) {
+				res.push(arrFunc[i].sort((a,b) => a - b))
 			}
 			return res;
 		}
-		
-
+		//8. відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні
+		//створити новий масив
+		let newArray = JSON.parse(JSON.stringify(arr));
+		//Знаходить максимальний елемент масиву, що приймає(оброблятиму дочірні масиви)
+		const maxValue = someArr => someArr.reduce((max, el) => (el > max) ? el : max);
+		//maxValue повертає значення по якому відбувається сортування методом sort, а a і b по суті є вкладеними масивами основного, 
+		//які я передаю в функцію для порівняння і вже з них отримую значення для порівняння.
+		const sortFunc = someArr => someArr.sort((a, b) => maxValue(b) - maxValue(a));
+	
 		document.write(`<div class="solution">
 			Результат виконання:<br><br>
 			1.Загальний прибуток кожного магазину потижнево: ${sumEveryMarket(arr)}<br>
@@ -145,7 +150,8 @@ const testArr =
 			4. Загальний прибуток за вихідні дні: ${incomeForWorWeekend(arr)}<br>
 			5. Загальний прибуток за середу по всім магазинам: ${maxIncomeForDay(3, arr)}<br>
 			6. Cформувати загальний список (одновимірний масив) зі значенням, що більші за 200: <br> ${moreThanNumber(200, arr)}<br>
-			7. Відсортовані за зростанням масиви: <br> [${sortArrFunc(arr).join('], [')}]
+			7. Відсортовані за зростанням масиви: <br> [${sortArrFunc(arr).join('], [')}]<br>
+			8. Відсортований в зворотньому порядку по найбільшому елементу: [${sortFunc(newArray).join('], [')}]<br>
 			</div>`);
 
 	</script>
