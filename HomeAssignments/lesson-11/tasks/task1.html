@@ -38,31 +38,22 @@
         <footer></footer>
     </div>
 	<script>
-/* 		function randomFillArray(min, max, lengthArr) { 
+		function randomFillArray(min, max, lengthArr) { 
 				let arr = [];
 				for (let i = 0; i < lengthArr; i++) {
 					arr.push(Math.floor(min+(Math.random()*(max-min+1))))
 				}
 				return arr;
 			}
-		//функцію для вкладеного масиву передаю в функцію для створення багатогвм=имірного масиву
+		//функцію для одновимірного масиву передаю в функцію для створення багатогвимірного масиву
 		function randomFillMultiArray (rowsLength, columnLength, min, max) {
 			let multiArr = [];
 			for (let i = 0; i < rowsLength; i++) {
 				multiArr.push(randomFillArray(min, max, columnLength))
 			} 
 			return multiArr;
-		} */
-
-const arr = 
-//  0    1    2    3    4    5   6 columns
-[[181,596, 951, 459, 381, 189, 22], //0 rows
-[376, 471, 760, 552, 149, 756, 299],  //1
-[561, 336, 797, 193, 274, 456, 531],  //2
-[403, 471, 925, 127, 928, 597, 582],  //3
-[455, 109, 195, 905, 164, 591, 325]]; //4
-
-const testArr = [181,596, 951, 459, 381, 789, 822];
+		}
+		const arr = randomFillMultiArray (7, 5, 100, 500)
 		//1.загальний прибуток кожного магазину за тиждень;
 		//треба порахувати результат одного масиву через reduce
 		// Поверх нього цикл що = кільк магазинів 
@@ -74,6 +65,7 @@ const testArr = [181,596, 951, 459, 381, 789, 822];
 			}
 			return result
 		}
+
 		//2.загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.);
 		//Я захотів створити функцію яка б рахувала суму по всім магазинам за конкр день і додавала суми в масив
 		//Мабуть задача мала б бути простіша і не варто розвертати цикли, але поки що так
@@ -92,6 +84,7 @@ const testArr = [181,596, 951, 459, 381, 789, 822];
 			return result;
 		}
 		const sumOfDay = sumDayOfAllMarkets(arr);
+
 		//3. Загальний прибуток за робочі дні
 		function incomeForWorkDays (someArr) {
 			let sumOfWorkDays = 0;
@@ -100,6 +93,7 @@ const testArr = [181,596, 951, 459, 381, 789, 822];
 			}
 			return sumOfWorkDays;
 		}
+
 		//4. Загальний прибуток за вихідні дні
 		function incomeForWorWeekend (someArr) {
 			let sumOfWorkDays = 0;
@@ -108,6 +102,7 @@ const testArr = [181,596, 951, 459, 381, 789, 822];
 			}
 			return sumOfWorkDays;
 		}
+
 		//5. Максимальний прибуток за середу
 		function maxIncomeForDay(dayNumber, someArr) {
 			let income = [];
@@ -116,8 +111,10 @@ const testArr = [181,596, 951, 459, 381, 789, 822];
 			}
 			return Math.max(...income)
 		}
+
 		//6. Cформувати загальний список (одновимірний масив) зі значенням, що більші за 200
 		const moreThanNumber = (num, someArr) => someArr.flat(Infinity).filter(el => el > num);
+
 		//7. Відсортувати кожен тиждень за зростанням
 		function sortArrFunc (someArr) {
 			const arrFunc = JSON.parse(JSON.stringify(someArr));
@@ -127,6 +124,7 @@ const testArr = [181,596, 951, 459, 381, 789, 822];
 			}
 			return res;
 		}
+
 		//8. відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні
 		//створити новий масив
 		let newArray = JSON.parse(JSON.stringify(arr));
@@ -135,7 +133,14 @@ const testArr = [181,596, 951, 459, 381, 789, 822];
 		//maxValue повертає значення по якому відбувається сортування методом sort, а a і b по суті є вкладеними масивами основного, 
 		//які я передаю в функцію для порівняння і вже з них отримую значення для порівняння.
 		const sortFunc = someArr => someArr.sort((a, b) => maxValue(b) - maxValue(a));
-	
+
+		//9. упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з рядків
+		//і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше).
+		//Знаходить суму одновимірного масиву
+		const sumFunc = someArr => someArr.reduce((sum, el) => sum + el, 0);
+		//По аналогії з 8 завданням сортує вже суми 
+		const sortSumFunc = someArr => someArr.sort((a, b) => sumFunc(b) - sumFunc(a));
+
 		document.write(`<div class="solution">
 			Результат виконання:<br><br>
 			1.Загальний прибуток кожного магазину потижнево: ${sumEveryMarket(arr)}<br>
@@ -152,6 +157,7 @@ const testArr = [181,596, 951, 459, 381, 789, 822];
 			6. Cформувати загальний список (одновимірний масив) зі значенням, що більші за 200: <br> ${moreThanNumber(200, arr)}<br>
 			7. Відсортовані за зростанням масиви: <br> [${sortArrFunc(arr).join('], [')}]<br>
 			8. Відсортований в зворотньому порядку по найбільшому елементу: [${sortFunc(newArray).join('], [')}]<br>
+			9. Упорядковані за спаданням суми елементів в кожному вкладеному масиві: [${sortSumFunc(arr).join('], [')}]
 			</div>`);
 
 	</script>
